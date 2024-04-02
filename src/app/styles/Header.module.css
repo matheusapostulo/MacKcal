@@ -1,0 +1,90 @@
+/* Estilos para o Header */
+.header{
+  display: flex;
+  background-color: rgb(255, 149, 149);
+  flex-direction: column;
+  height: 80px;
+  justify-content: center;
+}
+
+.containerContentHeader{
+  display: flex;
+  height: 40px;
+  margin: 0px 30px 0px 30px;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.navContainer{
+  display: flex;
+  width: 300px;
+  margin: 0;
+}
+
+.itensNav{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.hamburgerMenu{
+  display: none;
+}
+
+/* Media query para telas menores que 600px, mobile para celulares */
+@media screen and (max-width: 400px) {
+  .containerDrawer{
+    width: 280px !important;
+  }
+}
+
+/* Media query para telas menores que 768px, mobile para tablets */
+@media screen and (max-width: 768px) {
+  .navContainer, .perfilUser{
+    display: none;
+  }
+
+  .hamburgerMenu{
+    display: flex;
+    border: none;
+    background-color: transparent;
+  }
+
+  .containerDrawer{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    height: 100%;
+    width: 320px;
+  }
+
+  .botaoFecharDrawer{
+    background-color: transparent;
+    border: none;
+    display: flex;
+    height: 40px;
+    width: 40px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    /* flex h-10 w-10 justify-center items-center */
+  }
+
+  .drawerNavContainer{
+    height: 75%;
+    margin-top: 20px;
+    margin-left: 10px;
+  }
+
+  .drawerNavContainer ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 20%;
+  }
+}
+
