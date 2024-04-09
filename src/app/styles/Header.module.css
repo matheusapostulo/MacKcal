@@ -1,16 +1,16 @@
 /* Estilos para o Header */
 .header{
   display: flex;
-  background-color: rgb(255, 149, 149);
+  background-color: "#ffffff";
   flex-direction: column;
   height: 80px;
-  justify-content: center;
+  border-bottom: 1px solid #EBEBEB;
 }
 
 .containerContentHeader{
   display: flex;
-  height: 40px;
-  margin: 0px 30px 0px 30px;
+  height: 100%;
+  margin: 0px 81px 0px 81px;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
@@ -18,8 +18,10 @@
 
 .navContainer{
   display: flex;
-  width: 300px;
+  width: 500px;
   margin: 0;
+  height: 100%;
+  align-items: center;
 }
 
 .itensNav{
@@ -31,8 +33,36 @@
   justify-content: space-between;
 }
 
+.navDestaque{
+  color: #E4022D;
+  font-weight: bold;
+}
+
+.navLi{
+  color: #333333;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+
+.navDestaqueBottom{
+  height: 80px;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid 6px #E4022D;
+}
+
 .hamburgerMenu{
   display: none;
+}
+
+.logo{
+  display: flex;
+  align-items: center;
 }
 
 /* Media query para telas menores que 600px, mobile para celulares */
@@ -44,7 +74,7 @@
 
 /* Media query para telas menores que 768px, mobile para tablets */
 @media screen and (max-width: 768px) {
-  .navContainer, .perfilUser{
+  .navContainer{
     display: none;
   }
 
@@ -57,9 +87,12 @@
   .containerDrawer{
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
     height: 100%;
     width: 320px;
+  }
+
+  .containerContentHeader{
+    margin: 0px 23px 0px 23px;
   }
 
   .botaoFecharDrawer{
@@ -71,20 +104,38 @@
     justify-content: center;
     align-items: center;
     margin-top: 20px;
-    /* flex h-10 w-10 justify-center items-center */
-  }
-
-  .drawerNavContainer{
-    height: 75%;
-    margin-top: 20px;
     margin-left: 10px;
   }
 
+  .drawerNavContainer{
+    height: 100%;
+    margin-top: 20px;
+  }
+
   .drawerNavContainer ul{
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 20%;
   }
+
+  .drawerNavContainer ul li{
+    height: 25%;
+    color: #333333;
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+    height: 50px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .drawerNavDestaque{
+    background-color: #E4022D;
+    font-weight: 500;
+    color: white !important;
+  }
+
 }
 
