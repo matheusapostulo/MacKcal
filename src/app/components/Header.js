@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseOutline } from "react-icons/io5";
 import Drawer from '@mui/material/Drawer';
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname} from 'next/navigation'
 
 const navigation = [ 
     { title: "Início", href:"/" }, { title: "Refeições", href:"/Refeicoes" }, { title: "Objetivo", href:"/Objetivo" }
@@ -22,10 +22,6 @@ export default function Header() {
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen)
     };
-
-    useEffect(() => {
-        console.log(pathname)
-    }, [pathname])
 
     return(
         <header className={styles.header}>

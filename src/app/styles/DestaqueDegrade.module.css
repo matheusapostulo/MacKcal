@@ -1,0 +1,7 @@
+/* Estilo pré-setado para o componente do degradê */
+.destaqueDegrade{
+    background: linear-gradient(to right, #E4022D, #333333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+  

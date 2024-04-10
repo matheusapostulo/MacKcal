@@ -3,6 +3,7 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  color: #333333;
 }
 
 /* Tirando o estilo pré-setado das tags link */
@@ -12,11 +13,13 @@ a{
 }
 
 /* Definindo uma margin para o conteúdo principal do site */
+/* mobile */
 .containerChildrenLayout{
-  margin: 40px 85px 40px 85px;
+  margin: 25px 30px 25px 30px;
 }
-@media screen and (max-width: 768px) {
+/* desktop */
+@media screen and (min-width: 768px) {
   .containerChildrenLayout{
-    margin: 25px 30px 25px 30px;
+    margin: 40px 72px 40px 72px;
   }
 }

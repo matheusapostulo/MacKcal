@@ -1,0 +1,38 @@
+.navContainerMain{
+    display: flex;
+    align-items: center;
+}
+
+.navContainerMain > section{
+    display: flex;
+    align-items: center;
+}
+
+.iconArrow{
+    height: 26px;
+    width: 26px;
+    margin:2px 8px 0px 8px;
+}
+
+.containerLinks > a{
+    font-size: 14px;
+}
+
+.linkPagina{
+    color: #E4022D;
+    font-weight: 700;
+}
+
+
+/* desktop */
+@media screen and (min-width: 768px) {
+    .iconArrow{
+        height: 30px;
+        width: 30px;
+        margin:2px 8px 0px 8px;
+    }
+
+    .containerLinks > a{
+        font-size: 18px;
+    }
+}
