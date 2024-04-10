@@ -1,4 +1,71 @@
-/* mobile */
+/* Mobile - */
+
+/* Tela com objetivo */
+.containerComObjetivo{
+    display: flex;
+    flex-direction: column;  
+    gap: 15px;
+}
+
+.containerInfoUsuario{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.containerInfoUsuario > h1{
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.containerInfoUsuario > p{
+    font-size: 14px;
+}
+
+.containerInfoUsuario > p > span{
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.containerRefeicoes{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.containerRefeicoesConsumo > div{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.containerRefeicoesConsumo > div > p{
+    font-size: 13px;
+}
+
+.quantidadesCaloria{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.quantidadesCaloria > span{
+    font-weight: 900;
+}
+
+.refeicoesConsumoKcal{
+    color: red;
+    font-weight: 900;
+    margin-top: -5px;
+}
+
+.containerRefeicoesCards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Tela sem objetivo */
 .containerSemObjetivo{
     display: flex;
     flex-direction: column;  
@@ -25,8 +92,55 @@
     margin-top: 38px;
 }
 
-/* desktop */
+/* Desktop */
 @media screen and (min-width: 768px) {
+    /* Tela com Objetivo */
+    .containerComObjetivo{
+        gap: 30px;       
+    }
+    .containerInfoUsuario{
+        gap: 15px;
+    }
+
+    .containerInfoUsuario > h1{
+        font-size: 62px;
+    }
+    
+    .containerInfoUsuario > p{
+        font-size: 20px;
+    }
+    
+    .containerInfoUsuario > p > span{
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+    .containerRefeicoes{
+        display: flex;
+        flex-direction: column-reverse;
+        gap:20px;
+    }
+
+    .containerRefeicoesCards{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .containerRefeicoesConsumo{
+        align-self: flex-end;
+    }
+
+    .containerRefeicoesConsumo > div > p{
+        font-size: 18px;
+    }
+    
+    .quantidadesCaloria{
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    /* Tela sem Objetivo */
     .containerSemObjetivo{
         display: flex;
         flex-direction: column;
