@@ -27,7 +27,9 @@ export default function Header() {
         <header className={styles.header}>
             <section className={styles.containerContentHeader}>
                 <div className={styles.logo}>
-                    <img src='Logo.svg'/>
+                    <Link href={"/"}>
+                        <img src='Logo.svg'/>
+                    </Link>
                 </div>
                 <nav className={styles.navContainer}>
                     <ul className={styles.itensNav}>
