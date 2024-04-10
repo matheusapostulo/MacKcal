@@ -1,6 +1,7 @@
 /* Estilos para o Header */
 .header{
   display: flex;
+  position: inherit;
   background-color: "#ffffff";
   flex-direction: column;
   height: 80px;

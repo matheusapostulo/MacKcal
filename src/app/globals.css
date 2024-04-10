@@ -11,3 +11,12 @@ a{
   text-decoration: none;
 }
 
+/* Definindo uma margin para o conteúdo principal do site */
+.containerChildrenLayout{
+  margin: 40px 85px 40px 85px;
+}
+@media screen and (max-width: 768px) {
+  .containerChildrenLayout{
+    margin: 25px 30px 25px 30px;
+  }
+}
