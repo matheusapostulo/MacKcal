@@ -5,8 +5,8 @@ import Header from "./components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Web mobile",
-  description: "Site responsivo para a matéria de Web Mobile",
+  title: "MacKcal",
+  description: "Controle suas refeições para obter uma vida mais saudável!",
 };
 
 export default function RootLayout({ children }) {
