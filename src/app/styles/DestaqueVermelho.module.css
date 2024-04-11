@@ -1,0 +1,9 @@
+/* Estilo pré-setado para o componente Bold */
+.destaqueVermelho{
+    background: #E4022D;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    font-size: 30px
+}
+  
