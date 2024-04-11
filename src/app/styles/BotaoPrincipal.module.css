@@ -1,0 +1,16 @@
+/* mobile */
+.botaoPrincipal{
+    background-color: #333333;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+}
+/* desktop */
+@media screen and (min-width: 768px) {
+    .botaoPrincipal{
+        font-size: 18px;
+    }
+}

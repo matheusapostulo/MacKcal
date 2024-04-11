@@ -1,0 +1,132 @@
+/* Mobile */
+
+/* Tela com objetivo */
+.containerComObjetivo{
+    display: flex;
+    flex-direction: column;  
+    gap: 15px;
+}
+
+.containerInfoUsuario{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.containerInfoUsuario > h1{
+    font-size: 36px;
+    font-weight: 900;
+}
+
+.containerInfoUsuario > p{
+    font-size: 14px;
+}
+
+.containerInfoUsuario > p > span{
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.containerRefeicoes{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.containerRefeicoesCards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 15px;
+}
+
+/* Tela sem objetivo */
+.containerSemObjetivo{
+    display: flex;
+    flex-direction: column;  
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 46px;
+}
+
+.titleSemObjetivo{
+    font-size: 48px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.descricaoSemObjetivo{
+    padding: 0px 15px 0px 15px;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 24px;
+}
+
+.botaoSemObjetivo{
+    margin-top: 38px;
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    /* Tela com Objetivo */
+    .containerComObjetivo{
+        gap: 30px;       
+    }
+    .containerInfoUsuario{
+        gap: 15px;
+    }
+
+    .containerInfoUsuario > h1{
+        font-size: 62px;
+    }
+    
+    .containerInfoUsuario > p{
+        font-size: 20px;
+    }
+    
+    .containerInfoUsuario > p > span{
+        font-size: 24px;
+        font-weight: 900;
+    }
+
+    .containerRefeicoes{
+        display: flex;
+        flex-direction: column-reverse;
+        gap:20px;
+    }
+
+    .containerRefeicoesCards{
+        display: flex;
+        flex-direction: row;
+        margin-top: 0px;
+    }
+
+    /* Tela sem Objetivo */
+    .containerSemObjetivo{
+        display: flex;
+        flex-direction: column;
+        margin-top: 62px;
+        padding: 0px 120px 0px 120px;
+    }
+
+    .titleSemObjetivo{
+        font-size: 80px;
+        font-weight: 900;
+        text-align: center;
+    }
+
+    .descricaoSemObjetivo{
+        padding: 0px 40px 0px 40px;
+        font-size: 26px;
+        text-align: center;
+        line-height: 1.5;
+        margin-top: 32px;
+    }
+    
+    .botaoSemObjetivo{
+        margin-top: 62px;
+    }
+    
+}
