@@ -2,7 +2,7 @@
 .mainContainer{
     border: solid 1px #999999;
     border-radius: 10px;
-    height: 288px;
+    height: 290px;
 }
 
 .containerConteudo{
@@ -19,6 +19,7 @@
 
 .containerConteudo > h1:first-of-type{
     font-size: 20px;
+    text-transform: uppercase;
 }
 
 .listaItens{
@@ -59,6 +60,7 @@
 .caloriasCard{
     font-size: 18px;
     font-weight: 600;
+    margin-top: 7px;
 }
 
 /* Desktop */
@@ -66,7 +68,7 @@
     .mainContainer{
         border: solid 1px #999999;
         border-radius: 10px;
-        height: 300px;
+        height: 306px;
         width: 25%;
     }
 

@@ -4,6 +4,12 @@ import BotaoPrincipal from './components/BotaoPrincipal'
 import CardRefeicao from './components/CardRefeicao'
 import InformacoesConsumo from './components/InformacoesConsumo'
 
+const refeicoes = [
+  {id: 1, periodo: "manhã", alimentos:[{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:200}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:300}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:450}], totalAlimento:"1000 Kcal"},
+  {id: 2, periodo: "tarde", alimentos:[{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:200}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:300}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:450}], totalAlimento:"1000 Kcal"},
+  {id: 3, periodo: "noite", alimentos:[{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:200}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:300}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:450}], totalAlimento:"1000 Kcal"},
+]
+
 export default function Home() {
   // Criando variável para simular como vamos identificar que o usuário já tem um objetivo setado
   const temObjetivo = true
@@ -23,9 +29,11 @@ export default function Home() {
         <section className={styles.containerRefeicoes}>
           <InformacoesConsumo/>
           <section className={styles.containerRefeicoesCards}>
-            <CardRefeicao/>  
-            <CardRefeicao/>  
-            <CardRefeicao/>  
+            {refeicoes.map((periodo) => {
+                return(
+                    <CardRefeicao key={periodo.id} {...periodo}/>
+                )
+            })}  
           </section>
         </section>
       </main>
