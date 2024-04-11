@@ -1,0 +1,77 @@
+/* Mobile */
+.mainContainer{
+    border: solid 1px #999999;
+    border-radius: 10px;
+    height: 288px;
+}
+
+.containerConteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px 30px;
+    gap: 10px;
+}
+
+.containerConteudo > section:first-of-type{
+    height: 60px;
+}
+
+.containerConteudo > h1:first-of-type{
+    font-size: 20px;
+}
+
+.listaItens{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.listaItens > ul{
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+}
+
+.listaItens > ul > li > div{
+    display: flex;
+    flex-direction: row; 
+    gap:10px;
+    
+}
+
+.listaItens > ul > li > div > p{
+    color: #999999;
+    font-weight: 400;
+    width: 20%;
+    text-align: end;
+}
+
+.listaItens > ul > li > div > p:first-of-type{
+    text-align: start;
+    width: 80%;
+    overflow: hidden; /* esconde o conteúdo que ultrapassa o contêiner */
+    text-overflow: ellipsis; /* exibe reticências quando o texto ultrapassa o contêiner */
+}
+
+.caloriasCard{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    .mainContainer{
+        border: solid 1px #999999;
+        border-radius: 10px;
+        height: 300px;
+        width: 25%;
+    }
+
+    .containerConteudo{
+        margin: 15px 40px;
+        gap: 15px;
+    }
+}

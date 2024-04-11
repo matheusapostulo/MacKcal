@@ -1,15 +1,34 @@
 import styles from './styles/Inicio.module.css'
 import DestaqueDegrade from './components/DestaqueDegrade'
 import BotaoPrincipal from './components/BotaoPrincipal'
+import CardRefeicao from './components/CardRefeicao'
+import InformacoesConsumo from './components/InformacoesConsumo'
 
 export default function Home() {
   // Criando variável para simular como vamos identificar que o usuário já tem um objetivo setado
-  const temObjetivo = false
+  const temObjetivo = true
 
   // Se tem objetivo retornamos uma tela personalizada
   if(temObjetivo){
     return(
-      <h1>Tem</h1>
+      <main className={styles.containerComObjetivo}>
+        <section className={styles.containerInfoUsuario}>
+          <h1>
+            Olá, <DestaqueDegrade>Matheus</DestaqueDegrade>
+          </h1>
+          <p>
+            Essas são suas refeições para <span>Manter Peso!</span>
+          </p>
+        </section>
+        <section className={styles.containerRefeicoes}>
+          <InformacoesConsumo/>
+          <section className={styles.containerRefeicoesCards}>
+            <CardRefeicao/>  
+            <CardRefeicao/>  
+            <CardRefeicao/>  
+          </section>
+        </section>
+      </main>
     )
   }
   // Se não tem objetivo retornamos a tela que vai levar o user a criar um objetivo
