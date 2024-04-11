@@ -12,6 +12,11 @@ a{
   text-decoration: none;
 }
 
+/* Tirando estilo focus padrão do input */
+input:focus {
+  outline: none; /* Remove a borda de foco */
+}
+
 /* Definindo uma margin para o conteúdo principal do site */
 /* mobile */
 .containerChildrenLayout{
