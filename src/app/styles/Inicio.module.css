@@ -1,4 +1,4 @@
-/* Mobile - */
+/* Mobile */
 
 /* Tela com objetivo */
 .containerComObjetivo{
@@ -33,36 +33,12 @@
     gap: 10px;
 }
 
-.containerRefeicoesConsumo > div{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-.containerRefeicoesConsumo > div > p{
-    font-size: 13px;
-}
-
-.quantidadesCaloria{
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.quantidadesCaloria > span{
-    font-weight: 900;
-}
-
-.refeicoesConsumoKcal{
-    color: red;
-    font-weight: 900;
-    margin-top: -5px;
-}
-
 .containerRefeicoesCards{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 10px;
+    gap: 20px;
+    margin-top: 15px;
 }
 
 /* Tela sem objetivo */
@@ -124,20 +100,7 @@
     .containerRefeicoesCards{
         display: flex;
         flex-direction: row;
-        gap: 10px;
-    }
-
-    .containerRefeicoesConsumo{
-        align-self: flex-end;
-    }
-
-    .containerRefeicoesConsumo > div > p{
-        font-size: 18px;
-    }
-    
-    .quantidadesCaloria{
-        font-size: 22px;
-        font-weight: 500;
+        margin-top: 0px;
     }
 
     /* Tela sem Objetivo */

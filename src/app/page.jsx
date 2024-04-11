@@ -1,7 +1,8 @@
 import styles from './styles/Inicio.module.css'
 import DestaqueDegrade from './components/DestaqueDegrade'
 import BotaoPrincipal from './components/BotaoPrincipal'
-import CardRefeicao from './components/cardRefeicao'
+import CardRefeicao from './components/CardRefeicao'
+import InformacoesConsumo from './components/InformacoesConsumo'
 
 export default function Home() {
   // Criando variável para simular como vamos identificar que o usuário já tem um objetivo setado
@@ -20,10 +21,7 @@ export default function Home() {
           </p>
         </section>
         <section className={styles.containerRefeicoes}>
-          <section className={styles.containerRefeicoesConsumo}>
-            <div><p>Você está consumindo <span className={styles.quantidadesCaloria}>2925/<span>3012</span></span></p></div>
-            <div> <p className={styles.refeicoesConsumoKcal}>Kcal</p> </div>
-          </section>
+          <InformacoesConsumo/>
           <section className={styles.containerRefeicoesCards}>
             <CardRefeicao/>  
             <CardRefeicao/>  
