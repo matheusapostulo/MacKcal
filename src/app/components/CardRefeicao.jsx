@@ -51,7 +51,7 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                 </section>
                     
                 <section className={styles.caloriasCard}>
-                    <p>1201 Kcal</p>
+                    <p>{totalAlimento}</p>
                 </section>
             </section>
         </main>
