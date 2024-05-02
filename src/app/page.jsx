@@ -5,9 +5,9 @@ import CardRefeicao from './components/CardRefeicao'
 import InformacoesConsumo from './components/InformacoesConsumo'
 
 const refeicoes = [
-  {id: 1, periodo: "manhã", alimentos:[{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:200}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:300}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:450}], totalAlimento:"1000 Kcal"},
-  {id: 2, periodo: "tarde", alimentos:[{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:200}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:300}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:450}], totalAlimento:"1000 Kcal"},
-  {id: 3, periodo: "noite", alimentos:[{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:200}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:300}, {nomeAlimento:"Lorem ipsum dolor sit amet.", caloria:450}], totalAlimento:"1000 Kcal"},
+  {id: 1, periodo: "manhã", alimentos:[{nomeAlimento:"Alimento manhã", quantidade:"100g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:500}], totalAlimento:"550"},
+  {id: 2, periodo: "tarde", alimentos:[{nomeAlimento:"Alimento tarde", quantidade:"200g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:200},], totalAlimento:"250"},
+  {id: 3, periodo: "noite", alimentos:[{nomeAlimento:"Alimento noite", quantidade:"200g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:300},], totalAlimento:"350"},
 ]
 
 export default function Home() {
@@ -27,15 +27,15 @@ export default function Home() {
           </p>
         </section>
         <section className={styles.containerRefeicoes}>
-          <InformacoesConsumo/>
+          <InformacoesConsumo type={"Inicial"}/>
           <section className={styles.containerRefeicoesCards}>
             {refeicoes.map((periodo) => {
                 return(
-                    <CardRefeicao key={periodo.id} {...periodo}/>
+                  <CardRefeicao key={periodo.id} {...periodo}/>
                 )
             })}  
           </section>
-        </section>
+        </section> 
       </main>
     )
   }

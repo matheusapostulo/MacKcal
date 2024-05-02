@@ -1,0 +1,47 @@
+/* Mobile */
+.mainContainer{
+    display: flex;
+    border: solid 1px #dfdfdf;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(78, 78, 78, 0.2);
+    padding:15px 20px;
+}
+
+.containerInfoAlimentos{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quantidadeECaloria{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.quantidadeECaloria > p{
+    font-weight:700;
+    color: #E4022D;
+}
+
+.quantidadeECaloria > p:first-of-type{
+    color: #333333;
+}
+
+.iconDelete{
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    .mainContainer{
+        padding:18px 35px;
+    }
+}

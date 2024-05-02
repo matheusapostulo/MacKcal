@@ -5,7 +5,7 @@ import Header from "./components/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Web mobile",
+  title: "MacKcal",
   description: "Site responsivo para a matéria de Web Mobile",
 };
 
