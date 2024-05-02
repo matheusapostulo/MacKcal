@@ -1,19 +1,41 @@
+/* Mobile */
 .mainContainer{
     height: 100vh;
+    display: flex;
+    flex-direction: column; 
 }
 
 .areaFechar{
-    background-color: red;
+    flex-grow: 0.1; 
+    padding: 8px 8px;
+}
+
+.botaoFecharDrawer{
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentContainer{
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 0px 25px;
+    margin-top: 5px;
 }
 
 .searchBar{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: solid 1px #999999;
+    border: 1px solid #d4d4d4;
     border-radius: 8px;
-    height: 35px;
-    gap: 10px;
+    height: 38px;
+    padding: 0px 12px;
 }
 
 .searchBar > div:first-of-type {
@@ -23,12 +45,33 @@
 .searchBar > div > input{
     border: none;
     height: 40;
-    width: 95%;
-    margin-left: 12px;
-    padding: 5px 0px 5px 0px;
+    width: 90%;
+    padding: 5px 5px 5px 5px;
+    font-size: 14px;
 }
 
-.icon{
-    height: 50%;
-    margin-right: 12px;
+.searchBar > div >input::placeholder{
+    color: #888888;
+}
+
+.iconSearch{
+    display: flex;
+    font-size: 25px;
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    .areaFechar{
+        flex-grow: 0.1; 
+        padding: 10px 10px;
+    }
+    
+    .contentContainer{
+        padding: 0px 50px;
+        gap:30px;
+    }
+
+    .botaoFecharDrawer{
+        font-size: 35px;
+    }
 }

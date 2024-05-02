@@ -7,7 +7,7 @@ import { useState } from "react";
 import ModalRefeicoes from "./ModalRefeicoes";
 
 export default function CardRefeicao({periodo, alimentos, totalAlimento}){
-    // State que controla a abertura do modal
+// State que controla a abertura do modal
   const [open, setOpen] = useState(false)
 
   const handleOpen = () => {
@@ -69,7 +69,7 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                 </section>
             </section>
         </main>
-        <ModalRefeicoes open={open} handleClose={handleClose}/>
+        <ModalRefeicoes open={open} handleClose={handleClose} alimentos={alimentos}/>
         </>
     )
 }
