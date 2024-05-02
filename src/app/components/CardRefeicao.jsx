@@ -1,11 +1,25 @@
+'use client'
 import styles from "../styles/CardRefeicao.module.css"
 import { GiSlicedBread } from "react-icons/gi";
 import { GiSausage } from "react-icons/gi";
 import { GiChickenLeg } from "react-icons/gi";
+import { useState } from "react";
+import ModalRefeicoes from "./ModalRefeicoes";
 
 export default function CardRefeicao({periodo, alimentos, totalAlimento}){
+    // State que controla a abertura do modal
+  const [open, setOpen] = useState(false)
+
+  const handleOpen = () => {
+      setOpen(true)
+  }
+
+  const handleClose = () => {
+      setOpen(false)
+  }
     return(
-        <main className={styles.mainContainer}>
+        <>
+        <main onClick={handleOpen} className={styles.mainContainer}>
             <section className={styles.containerConteudo}>
                 <section>
                     {periodo == "manhã" ? (
@@ -55,5 +69,7 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                 </section>
             </section>
         </main>
+        <ModalRefeicoes open={open} handleClose={handleClose}/>
+        </>
     )
 }
