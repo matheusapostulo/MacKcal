@@ -69,7 +69,7 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                 </section>
             </section>
         </main>
-        <ModalRefeicoes open={open} handleClose={handleClose} alimentos={alimentos}/>
+        <ModalRefeicoes open={open} handleClose={handleClose} totalAlimento={totalAlimento} alimentos={alimentos}/>
         </>
     )
 }

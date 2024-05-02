@@ -17,6 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .contentContainer{
@@ -57,6 +58,12 @@
 .iconSearch{
     display: flex;
     font-size: 25px;
+}
+
+.cardsAlimentos{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 /* Desktop */

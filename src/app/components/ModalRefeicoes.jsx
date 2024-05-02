@@ -5,8 +5,9 @@ import styles from '../styles/ModalRefeicoes.module.css';
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
 import InformacoesConsumo from './InformacoesConsumo';
+import CardAlimentoUsuario from './CardAlimentoUsuario';
 
-export default function ModalRefeicoes({open, handleClose, alimentos}){
+export default function ModalRefeicoes({open, handleClose, alimentos, totalAlimento}){
     return(
         <Dialog
             open={open}
@@ -33,16 +34,16 @@ export default function ModalRefeicoes({open, handleClose, alimentos}){
                                 />
                             </div>
                     </section>
-                    <InformacoesConsumo type={"modalRefeicoes"}/>
+                    <InformacoesConsumo type={"modalRefeicoes"} totalAlimento={totalAlimento}/>
 
-                    <section>
-                        {
-                            alimentos.map((alimento) => {
-                                return(
-                                    <p key={alimento.nomeAlimento}>{alimento.nomeAlimento}</p>
-                                )
-                            })
-                        }
+                    {/* Renderizando os alimentos */}
+                    <section className={styles.cardsAlimentos}>
+                        { alimentos.map((alimento) => {
+                            return(
+                                // A key do alimento pode ser um id que o alimento da api pode proporcionar
+                                <CardAlimentoUsuario key={alimento.caloria} {...alimento}/>
+                            )
+                        })}
                     </section>
                 </DialogContent>
             </main>

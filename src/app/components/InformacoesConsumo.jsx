@@ -1,6 +1,6 @@
 import styles from '../styles/InformacoesConsumo.module.css'
 
-export default function InformacoesConsumo({type}){
+export default function InformacoesConsumo({type, totalAlimento}){
     return(
         <section className={styles.containerRefeicoesConsumo}>
             <div>
@@ -13,7 +13,7 @@ export default function InformacoesConsumo({type}){
                 ):(
                     <p> Sua refeição possui
                         <span className={styles.quantidadesCaloria}>
-                            <span> 3012</span>
+                            <span> {totalAlimento} </span>
                         </span>
                     </p>
                 )} 
