@@ -3,6 +3,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column; 
+    z-index: 1;
 }
 
 .areaFechar{
@@ -66,6 +67,33 @@
     gap: 20px;
 }
 
+.hiddenSearchResultsContainer{
+    display: none;
+}
+
+.searchResultsContainer{
+    animation: fadeIn 3s ease-in-out forwards; 
+    animation-delay: 4s; 
+    position: absolute;
+    width:100%;
+    height: 83.8%;
+    margin-top: 40px;
+    z-index: 2;
+    left:0;
+    overflow-y: scroll;
+}
+
+.searchAreaResults{
+    background-color: white;
+    height: 10%;
+}
+
+.searchAreaClose{
+    height: 90%;
+    background-color: rgba(116, 116, 116, 0.5); /* cor branca com 50% de opacidade */
+}
+
+
 /* Desktop */
 @media screen and (min-width: 768px) {
     .areaFechar{
@@ -80,5 +108,9 @@
 
     .botaoFecharDrawer{
         font-size: 35px;
+    }
+
+    .searchResultsContainer{
+        height: 82.6%;
     }
 }
