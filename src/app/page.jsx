@@ -5,7 +5,7 @@ import CardRefeicao from './components/CardRefeicao'
 import InformacoesConsumo from './components/InformacoesConsumo'
 
 const refeicoes = [
-  {id: 1, periodo: "manhã", alimentos:[{nomeAlimento:"Alimento manhã", quantidade:"100g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:500}], totalAlimento:"550"},
+  {id: 1, periodo: "manhã", alimentos:[{nomeAlimento:"Alimento manhã", quantidade:"100g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:500}, {nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:500}], totalAlimento:"550"},
   {id: 2, periodo: "tarde", alimentos:[{nomeAlimento:"Alimento tarde", quantidade:"200g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:200},], totalAlimento:"250"},
   {id: 3, periodo: "noite", alimentos:[{nomeAlimento:"Alimento noite", quantidade:"200g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:300},], totalAlimento:"350"},
 ]

@@ -5,6 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import styles from '../styles/ModalRefeicoes.module.css';
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
+import { FaPlus } from "react-icons/fa";
 import InformacoesConsumo from './InformacoesConsumo';
 import CardAlimentoUsuario from './CardAlimentoUsuario';
 import { useEffect, useState } from 'react';
@@ -17,7 +18,6 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
     const [valueDebounce] = useDebounce(valueInput, 600)
     // State relacionado aos resultados da pesquisa
     const [alimentosSearch, setAlimentosSearch] = useState(null)
-    console.log("Esse é alimentos:",alimentosSearch)
 
     // State relacionado à abertura da caixa de resultados da pesquisa
     const [openSearchResults, setOpenSearchResults] = useState(false)
@@ -81,6 +81,17 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
         handleClose()
     }
     
+    /*
+        A função abaixo ficará responsável por adicionar o alimento no array de alimentos do usuário no período 
+        que está aberto o modal. 
+    */
+    const handleAddFood = (alimentoId, alimentoNome, alimentoQuantidade, alimentoCaloria) => {
+        // Vamos pegar a caloria e converter para um number para adicionar no usuário
+        const alimentoCaloriaSplit = alimentoCaloria.split(" ")
+        const alimentoCaloriaNumber = parseInt(alimentoCaloriaSplit[0])
+        console.log(`Vamos adicionar o alimento do id ${alimentoId}, de nome ${alimentoNome}, com quantidade ${alimentoQuantidade} e com ${alimentoCaloriaNumber} calorias`)
+    }
+
     return(
         <Dialog
             open={open}
@@ -113,9 +124,7 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
                                         <IoCloseOutline color={"#333333"}/>
                                     </div>
                                 )
-                                }
-                                
-                           
+                                }                   
                     </section>
 
                     {/* Resultados da pesquisa */}
@@ -126,12 +135,17 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
                                     alimentosSearch.map((alimento) => {
                                         return(
                                             <div className={styles.containerItemResult}>
-                                                <p>{alimento.descricao}</p>
+                                                <button className={styles.iconPlus} onClick={() => handleAddFood(alimento.id.timestamp, alimento.descricao, alimento.quantidade, alimento.calorias)}>
+                                                    <FaPlus
+                                                        fill="#E4022D"
+                                                    />
+                                                </button>
+                                                <p>{alimento.descricao}, {alimento.quantidade}, {alimento.calorias}</p>
                                             </div>
                                         )
                                     })
                                 ) : (
-                                    <p>Nenhum resultado para "{valueDebounce}"</p>
+                                    <p className={styles.noResultSearch}>Nenhum resultado para "{valueDebounce}"</p>
                                 )
                                 
                             }
