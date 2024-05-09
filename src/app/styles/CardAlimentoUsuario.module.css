@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    font-size: 13px;
 }
 
 .quantidadeECaloria{
@@ -30,7 +31,7 @@
 }
 
 .iconDelete{
-    font-size: 30px;
+    font-size: 25px;
     background-color: transparent;
     border: none;
     display: flex;
@@ -44,4 +45,12 @@
     .mainContainer{
         padding:18px 35px;
     }
+
+    .containerInfoAlimentos{
+        font-size: 16px;
+    }
+
+    .iconDelete{
+        font-size: 30px;
+    }    
 }

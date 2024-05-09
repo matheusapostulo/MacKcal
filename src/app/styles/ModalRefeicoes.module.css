@@ -3,10 +3,12 @@
     height: 100vh;
     display: flex;
     flex-direction: column; 
+    z-index: 1;
+    overflow-y: hidden;
 }
 
 .areaFechar{
-    flex-grow: 0.1; 
+    flex-grow: 30px; 
     padding: 8px 8px;
 }
 
@@ -45,7 +47,7 @@
 
 .searchBar > div > input{
     border: none;
-    height: 40;
+    height: 27px;
     width: 90%;
     padding: 5px 5px 5px 5px;
     font-size: 14px;
@@ -60,17 +62,87 @@
     font-size: 25px;
 }
 
+.iconCloseSearch{
+    display: flex;
+    font-size: 25px;
+    cursor: pointer;
+}
+
 .cardsAlimentos{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-bottom: 20px;
 }
+
+.cardsAlimentosHidden{
+    display: none;
+}
+
+.hiddenSearchResultsContainer{
+    display: none;
+}
+
+.searchResultsContainer{
+    position: absolute;
+    width:100%;
+    height: 83%;
+    margin-top: 48px;
+    z-index: 2;
+    left:0;
+}
+
+.searchAreaResults{
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.noResultSearch{
+    padding: 15px 25px;
+}
+
+.containerItemResult{
+    display: flex;
+    gap:10px;
+    padding: 30px 25px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.containerItemResult > p{
+    align-self: center;
+}
+
+.iconPlus{
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+
 
 /* Desktop */
 @media screen and (min-width: 768px) {
     .areaFechar{
-        flex-grow: 0.1; 
+        flex-grow: 45px; 
         padding: 10px 10px;
+    }
+
+    .iconSearch{
+        display: flex;
+        font-size: 30px;
+    }
+
+    .iconCloseSearch{
+        display: flex;
+        font-size: 30px;
     }
     
     .contentContainer{
@@ -81,4 +153,37 @@
     .botaoFecharDrawer{
         font-size: 35px;
     }
+
+    .searchBar{
+        height: 45px;
+    }
+
+    .searchBar > div > input{
+        height: 35px;
+    }
+
+    .searchAreaResults{
+        margin-top:20px;
+        font-size: 16px;
+    }
+
+    .searchResultsContainer{
+        height: 75%;
+    }
+
+    .noResultSearch{
+        padding: 15px 50px;
+    }
+
+    .iconPlus{
+        font-size: 30px;
+    }
+
+    .containerItemResult{
+        display: flex;
+        gap: 20px;
+        padding: 35px 50px;
+        border-bottom: 1px solid #d4d4d4;
+    }
+
 }
