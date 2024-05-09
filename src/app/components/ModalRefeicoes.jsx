@@ -17,6 +17,7 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
     const [valueDebounce] = useDebounce(valueInput, 600)
     // State relacionado aos resultados da pesquisa
     const [alimentosSearch, setAlimentosSearch] = useState(null)
+    console.log("Esse é alimentos:",alimentosSearch)
 
     // State relacionado à abertura da caixa de resultados da pesquisa
     const [openSearchResults, setOpenSearchResults] = useState(false)
@@ -25,34 +26,42 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
     const handleInput = (e) => {
         setValueInput(e.target.value)
     }
-    
 
-    // // Função que vai fazer o fetch dos alimentos e colocar no array de alimentos
-    // const fetchAlimentos = async (valueDebounce) => {
-    //     const url = `https://caloriasporalimentoapi.herokuapp.com/api/calorias/?descricao=${valueDebounce}`
-    //     console.log(url)
-    //     try {
-    //         // Fetch do alimento com o nome
-    //         const res = await fetch(url);
-    //         // Convertendo para json
-    //         const alimentosArrayRes = await res.json()
+    // Função que vai fazer o fetch dos alimentos e colocar no array de alimentos
+    const fetchAlimentos = async (valueDebounce) => {
+        try {
+            // Fetch do alimento com o nome
+            const res = await fetch(`/api/alimentos/?query=${valueDebounce}`);
+            // Convertendo para json
+            const alimentosArrayRes = await res.json()
 
-    //         console.log(alimentosArrayRes)
+            console.log(alimentosArrayRes)
+
+            setAlimentosSearch(alimentosArrayRes)
             
-    //     } catch (error) {
-    //         console.log("Error:", error)
-    //     }
-    // }
+        } catch (error) {
+            console.log("Error:", error)
+        }
+    }
 
     // Sempre que o valueInput for maior que 3, vamos fazer a requisição do alimento e obter os resultados
     useEffect(() => {
         // Só faremos a requisição quando o tamanho do input for maior que 3
         if(valueDebounce.length >= 3){
             // Fazendo a requisição e setando o resultado em um state de resultados
-            // fetchAlimentos(valueDebounce)
-            setOpenSearchResults(true)
+            fetchAlimentos(valueDebounce)
+        } else if(valueDebounce.length == 0){
+            setOpenSearchResults(false)
+            setAlimentosSearch(null)
         }
     }, [valueDebounce])
+
+    // UseEffect que verifica se tem resultado no nosso array de alimentos, se tiver, vamos abrir o container dos resultados
+    useEffect(() => {
+        if(alimentosSearch){
+            setOpenSearchResults(true)
+        }
+    }, [alimentosSearch])
 
     // Função que verifica se há algo no valueInput e abre a caixa dos resultados da pesquisa
     const handleClickInput = () => {
@@ -90,28 +99,50 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
                             <div>
                                 <input onClick={handleClickInput} onChange={handleInput} placeholder="Pesquisar alimento"/>
                             </div>
-                            <div className={styles.iconSearch}>
-                                <AiOutlineSearch
-                                    style={{
-                                        color: "#333333",
-                                    }}
-                                />
-                            </div>
+                            {
+                                !openSearchResults ? (
+                                    <div className={styles.iconSearch}>
+                                        <AiOutlineSearch
+                                            style={{
+                                                color: "#333333",
+                                            }}
+                                        />
+                                    </div>
+                                ):(
+                                    <div onClick={() => setOpenSearchResults(false)} className={styles.iconCloseSearch}>
+                                        <IoCloseOutline color={"#333333"}/>
+                                    </div>
+                                )
+                                }
+                                
+                           
                     </section>
 
                     {/* Resultados da pesquisa */}
                     <section className={openSearchResults ? styles.searchResultsContainer : styles.hiddenSearchResultsContainer}>
                         <section className={styles.searchAreaResults}>
-                            <p>{valueInput}</p>
+                            { alimentosSearch &&
+                                alimentosSearch.length > 0 ? (
+                                    alimentosSearch.map((alimento) => {
+                                        return(
+                                            <div className={styles.containerItemResult}>
+                                                <p>{alimento.descricao}</p>
+                                            </div>
+                                        )
+                                    })
+                                ) : (
+                                    <p>Nenhum resultado para "{valueDebounce}"</p>
+                                )
+                                
+                            }
                         </section>
-                        <div onClick={() => setOpenSearchResults(false)} className={styles.searchAreaClose}/>
                     </section>
 
                     {/* Informações de consumo do usuário */}
                     <InformacoesConsumo type={"modalRefeicoes"} totalAlimento={totalAlimento}/>
 
                     {/* Renderizando os alimentos */}
-                    <section className={styles.cardsAlimentos}>
+                    <section className={!openSearchResults ? styles.cardsAlimentos : styles.cardsAlimentosHidden}>
                         { alimentos.map((alimento) => {
                             return(
                                 // A key do alimento pode ser um id que o alimento da api pode proporcionar
