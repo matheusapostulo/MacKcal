@@ -1,18 +1,61 @@
+"use client"
 import styles from './styles/Inicio.module.css'
 import DestaqueDegrade from './components/DestaqueDegrade'
 import BotaoPrincipal from './components/BotaoPrincipal'
 import CardRefeicao from './components/CardRefeicao'
 import InformacoesConsumo from './components/InformacoesConsumo'
+import { useState, useEffect } from "react"
 
-const refeicoes = [
-  {id: 1, periodo: "manhã", alimentos:[{nomeAlimento:"Alimento manhã", quantidade:"100g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:500}, {nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:500}], totalAlimento:"550"},
-  {id: 2, periodo: "tarde", alimentos:[{nomeAlimento:"Alimento tarde", quantidade:"200g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:200},], totalAlimento:"250"},
-  {id: 3, periodo: "noite", alimentos:[{nomeAlimento:"Alimento noite", quantidade:"200g", caloria:50},{nomeAlimento:"Lorem ipsum dolor sit amet.", quantidade:"200g", caloria:300},], totalAlimento:"350"},
-]
+
+const getAlimentos = async function () {
+  try {
+      let response = await fetch(`http://localhost:8000/alimentos`);
+      let data = await response.json();
+
+      if( data && data.length > 0 ) {
+          let alimentosManha = data.filter((alimento) => { return alimento.periodo == "manhã"} )
+          let alimentosTarde = data.filter((alimento) => { return alimento.periodo == "tarde"} )
+          let alimentosNoite = data.filter((alimento) => { return alimento.periodo == "noite"} )
+
+          let refeicoes = [
+              {
+                  id: 1,
+                  periodo: "manhã",
+                  alimentos: alimentosManha,
+                  totalAlimento: alimentosManha.reduce( (acc, cur) => acc + cur.alimentoCaloriaNumber, 0 ) + " Kcal"
+              } ,
+              {
+                  id: 2,
+                  periodo: "tarde",
+                  alimentos: alimentosTarde,
+                  totalAlimento: alimentosTarde.reduce( (acc, cur) => acc + cur.alimentoCaloriaNumber, 0 ) + " Kcal"
+              },
+              {
+                  id: 3,
+                  periodo: "noite",
+                  alimentos: alimentosNoite,
+                  totalAlimento: alimentosNoite.reduce( (acc, cur) => acc + cur.alimentoCaloriaNumber, 0 ) + " Kcal"
+              }    
+          ]
+          return refeicoes;
+      } else {
+          return [];
+      }
+  } catch (e) {
+      console.error("Erro na função App::getAlimentos: ", e);
+  }
+}
+
 
 export default function Home() {
   // Criando variável para simular como vamos identificar que o usuário já tem um objetivo setado
   const temObjetivo = true
+
+  const [refeicoes, setRefeicoes] = useState([]);
+    
+    useEffect(() => {
+        getAlimentos().then((alimento) => setRefeicoes(alimento))
+    },[refeicoes])
 
   // Se tem objetivo retornamos uma tela personalizada
   if(temObjetivo){

@@ -11,7 +11,28 @@ import CardAlimentoUsuario from './CardAlimentoUsuario';
 import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce'
 
-export default function ModalRefeicoes({open, handleClose, alimentos, totalAlimento}){
+
+/* Função que adiciona uma refeição ao JSON do json-server. */
+const addToJSON = async function( refeicao ) {
+    try {
+        const options = {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(refeicao)
+        }
+        let resp = await fetch(`http://localhost:8000/alimentos`, options)
+        let data = await resp.json();
+        return data;
+    } catch (e) {
+        console.error("Erro:", e)
+    }
+}
+
+
+export default function ModalRefeicoes({open, handleClose, alimentos, totalAlimento, periodo}){
     // State relacionado ao input do search
     const [valueInput, setValueInput] = useState("")
     // State da lib use-debounce para colocar um delay no nosso nome de produto do search
@@ -35,7 +56,7 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
             // Convertendo para json
             const alimentosArrayRes = await res.json()
 
-            console.log(alimentosArrayRes)
+            //console.log(alimentosArrayRes)
 
             setAlimentosSearch(alimentosArrayRes)
             
@@ -85,11 +106,23 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
         A função abaixo ficará responsável por adicionar o alimento no array de alimentos do usuário no período 
         que está aberto o modal. 
     */
-    const handleAddFood = (alimentoId, alimentoNome, alimentoQuantidade, alimentoCaloria) => {
+    const handleAddFood = (alimentoId, alimentoNome, alimentoQuantidade, alimentoCaloria, periodo) => {
+        
         // Vamos pegar a caloria e converter para um number para adicionar no usuário
         const alimentoCaloriaSplit = alimentoCaloria.split(" ")
         const alimentoCaloriaNumber = parseInt(alimentoCaloriaSplit[0])
-        console.log(`Vamos adicionar o alimento do id ${alimentoId}, de nome ${alimentoNome}, com quantidade ${alimentoQuantidade} e com ${alimentoCaloriaNumber} calorias`)
+        //const periodo = "noite"
+        
+        console.log("PERIODO: ", periodo)
+        addToJSON({
+            alimentoId: alimentoId,
+            periodo: periodo,
+            alimentoNome: alimentoNome,
+            alimentoQuantidade: alimentoQuantidade,
+            alimentoCaloriaNumber: alimentoCaloriaNumber
+        })
+        
+        //console.log(`Vamos adicionar o alimento do id ${alimentoId}, de nome ${alimentoNome}, com quantidade ${alimentoQuantidade} e com ${alimentoCaloriaNumber} calorias`)
     }
 
     return(
@@ -135,7 +168,7 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
                                     alimentosSearch.map((alimento) => {
                                         return(
                                             <div className={styles.containerItemResult}>
-                                                <button className={styles.iconPlus} onClick={() => handleAddFood(alimento.id.timestamp, alimento.descricao, alimento.quantidade, alimento.calorias)}>
+                                                <button className={styles.iconPlus} onClick={() => handleAddFood(alimento.id.timestamp, alimento.descricao, alimento.quantidade, alimento.calorias, periodo)}>
                                                     <FaPlus
                                                         fill="#E4022D"
                                                     />
@@ -160,7 +193,7 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
                         { alimentos.map((alimento) => {
                             return(
                                 // A key do alimento pode ser um id que o alimento da api pode proporcionar
-                                <CardAlimentoUsuario key={alimento.caloria} {...alimento}/>
+                                <CardAlimentoUsuario key={alimento.id} {...alimento}/>
                             )
                         })}
                     </section>

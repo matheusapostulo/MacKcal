@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "json": "npx json-server --watch src/app/data/db.json --port 8000",
+    "server": "npm-run-all --parallel json dev"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

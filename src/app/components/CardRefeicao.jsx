@@ -7,6 +7,7 @@ import { useState } from "react";
 import ModalRefeicoes from "./ModalRefeicoes";
 
 export default function CardRefeicao({periodo, alimentos, totalAlimento}){
+
 // State que controla a abertura do modal
   const [open, setOpen] = useState(false)
 
@@ -53,10 +54,10 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                     <ul>
                         {alimentos.map((alimento) => {
                             return(
-                               <li key={alimento.caloria}>
+                               <li key={alimento.alimentoId}>
                                     <div>
-                                        <p>{alimento.nomeAlimento}</p>
-                                        <p>{alimento.caloria}</p>
+                                        <p>{alimento.alimentoNome}</p>
+                                        <p>{alimento.alimentoCaloriaNumber}</p>
                                     </div>
                                 </li> 
                             )
@@ -65,11 +66,11 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                 </section>
                     
                 <section className={styles.caloriasCard}>
-                    <p>1201 Kcal</p>
+                    <p>{totalAlimento}</p>
                 </section>
             </section>
         </main>
-        <ModalRefeicoes open={open} handleClose={handleClose} totalAlimento={totalAlimento} alimentos={alimentos}/>
+        <ModalRefeicoes open={open} handleClose={handleClose} totalAlimento={totalAlimento} alimentos={alimentos} periodo={periodo}/>
         </>
     )
 }
