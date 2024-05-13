@@ -9,7 +9,7 @@ import Drawer from '@mui/material/Drawer';
 import { usePathname} from 'next/navigation'
 
 const navigation = [ 
-    { title: "Início", href:"/" }, { title: "Refeições", href:"/Refeicoes" }, { title: "Objetivo", href:"/Objetivo" }
+    { title: "Início", href:"/" }, { title: "Sobre", href:"/Sobre" }, { title: "Objetivo", href:"/Objetivo" }
 ]
 
 export default function Header() {
