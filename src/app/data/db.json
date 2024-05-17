@@ -1,4 +1,16 @@
 {
+  "usuarios": [
+    {
+      "id": "4483",
+      "nome": "Matheus",
+      "sobrenome": "Henrique",
+      "peso": 70,
+      "altura": 170,
+      "imc": "24.22",
+      "objetivo": "manter",
+      "limite_calorias": 2000
+    }
+  ],
   "alimentos": [
     {
       "id": 1,
@@ -65,14 +77,6 @@
       "alimentoCaloriaNumber": 220
     },
     {
-      "id": "b99b",
-      "alimentoId": 1594720976,
-      "periodo": "noite",
-      "alimentoNome": "Ensopado de carne",
-      "alimentoQuantidade": "1 porção (252 g)",
-      "alimentoCaloriaNumber": 481
-    },
-    {
       "id": "151f",
       "alimentoId": 1594720760,
       "periodo": "noite",
@@ -86,6 +90,14 @@
       "alimentoNome": "Sopa de arroz com frango",
       "alimentoQuantidade": "1 xícara (243 g)",
       "alimentoCaloriaNumber": 58
+    },
+    {
+      "id": "3e39",
+      "alimentoId": 1594720527,
+      "periodo": "manhã",
+      "alimentoNome": "Carne de veado",
+      "alimentoQuantidade": "1 pedaço (157 g)",
+      "alimentoCaloriaNumber": 257
     }
   ]
 }

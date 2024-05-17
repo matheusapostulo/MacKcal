@@ -48,29 +48,65 @@ const getAlimentos = async function () {
 
 
 export default function Home() {
-  // Criando variável para simular como vamos identificar que o usuário já tem um objetivo setado
-  const temObjetivo = true
-
   const [refeicoes, setRefeicoes] = useState([]);
-    
-    useEffect(() => {
+  const [usuario, setUsuario] = useState(null)
+  const [caloriaConsumida, setCaloriaConsumida] = useState(null)
+
+  const getUsuario = async function () {
+    try {
+      let data = await fetch("http://localhost:8000/usuarios")
+      let dataJson = await data.json()
+      if(dataJson.length != 0){
+        setUsuario(dataJson)  
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // useEffect para buscar usuário
+  useEffect(() => {
+    getUsuario()
+  }, [])
+  
+  // useEffect para buscar refeições 
+  useEffect(() => {
+      if(usuario){
         getAlimentos().then((alimento) => setRefeicoes(alimento))
-    },[refeicoes])
+      }
+  },[usuario])
+
+  // useEffect para buscar usuário
+  useEffect(() => {
+    if(refeicoes.length != 0){
+      // Calculando o total consumido de todas as refeições de todos os períodos
+      let totalConsumidoRefeicoes = refeicoes.reduce((soma, refeicao) => {
+        let refeicaoSplit = refeicao.totalAlimento.split(" ")
+        let refeicaoTotalAlimentoNumber = parseInt(refeicaoSplit[0])
+        return soma + refeicaoTotalAlimentoNumber
+      }, 0)
+      
+      // Setando o resultado em um state
+      setCaloriaConsumida(totalConsumidoRefeicoes)
+    }
+  }, [refeicoes])
 
   // Se tem objetivo retornamos uma tela personalizada
-  if(temObjetivo){
+  if(usuario){
     return(
       <main className={styles.containerComObjetivo}>
         <section className={styles.containerInfoUsuario}>
           <h1>
-            Olá, <DestaqueDegrade>Matheus</DestaqueDegrade>
+            Olá, <DestaqueDegrade>{usuario[0].nome}</DestaqueDegrade>
           </h1>
           <p>
-            Essas são suas refeições para <span>Manter Peso!</span>
+            Essas são suas refeições para <span>{usuario[0].objetivo} peso!</span>
           </p>
         </section>
         <section className={styles.containerRefeicoes}>
-          <InformacoesConsumo type={"Inicial"}/>
+          {caloriaConsumida &&
+            <InformacoesConsumo type={"Inicial"} alertCaloria={caloriaConsumida > usuario[0].limiteCaloria ? true : false} caloriaConsumida={caloriaConsumida ? caloriaConsumida : 0} limiteCaloria={usuario[0].limite_calorias}/>
+          }
           <section className={styles.containerRefeicoesCards}>
             {refeicoes.map((periodo) => {
                 return(

@@ -1,19 +1,19 @@
 import styles from '../styles/InformacoesConsumo.module.css'
 
-export default function InformacoesConsumo({type, totalAlimento}){
+export default function InformacoesConsumo({type, totalAlimento, limiteCaloria, caloriaConsumida, alertCaloria}){
     return(
         <section className={styles.containerRefeicoesConsumo}>
             <div>
                 { type == "Inicial" ? (
                         <p> Você está consumindo
-                            <span className={styles.quantidadesCaloria}> 2925/
-                                <span>3012</span>
+                            <span className={!alertCaloria ? styles.caloriaConsumidaAlert : styles.caloriaConsumida}> {caloriaConsumida}
+                                <span className={styles.limiteCaloria}>/{limiteCaloria}</span>
                             </span>
                         </p>
                 ):(
                     <p> Sua refeição possui
-                        <span className={styles.quantidadesCaloria}>
-                            <span> {totalAlimento} </span>
+                        <span className={styles.caloriaConsumida}>
+                            <span className={styles.limiteCaloria}> {totalAlimento} </span>
                         </span>
                     </p>
                 )} 
