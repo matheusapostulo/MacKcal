@@ -4,9 +4,14 @@ import styles from '../styles/Objetivo.module.css'
 import Breadcrumbs from "../components/Breadcrumbs";
 import DestaqueVermelho from "../components/DestaqueVermelho";
 import { useEffect, useState } from 'react';
+import { getUser } from '@/utils/api';
+import { RiSipFill } from 'react-icons/ri';
 
 
 export default function Objetivo(){
+  // States para verificar se há um usuário ou não
+  const [usuario, setUsuario] = useState()
+  
   // States para as informações do usuário
   const [nome, setNome] = useState("")
   const [sobrenome, setSobrenome] = useState("")
@@ -14,6 +19,11 @@ export default function Objetivo(){
   const [altura, setAltura] = useState()
   const [imc, setImc] = useState()
   const [objetivo, setObjetivo] = useState()
+
+  const checkAndSetUser = async function () {
+    let user = await getUser()
+    setUsuario(user)
+  }
 
   const calcularObjetivoImc = async () => {
     // Vamos calcular o IMC
@@ -41,9 +51,20 @@ export default function Objetivo(){
     }
   }
 
+  // UseEffect que verifica e obtem um usuário
   useEffect(() => {
-    // Vamos pegar tudo agora e criar o usuário
-    const createUser = async () => {
+    checkAndSetUser()
+  },[])
+
+  useEffect(() => {
+    // Vamos verificar se já existe um usuário e editar suas informações, se não existe, vamos pegar tudo agora criar um usuário  
+    const createOrEditUser = async () => {
+      /* Caso exista um usuário */
+      if(usuario){
+        /* Aqui tem uma lógica de dar um PATCH nas informações que vai mudar */
+        return
+      }
+      /* Caso não exista um usuário */
       // Criando um objeto com os dados para mandar para o post
       let dados = {
         nome: nome,
@@ -73,7 +94,7 @@ export default function Objetivo(){
 
     // Se tiver um objetivo, cria o usuário
     if(objetivo){
-      createUser()
+      createOrEditUser()
     }
   }, [objetivo])
   
@@ -91,7 +112,7 @@ export default function Objetivo(){
             <p className={styles.mensagemObjetivo}>Insira suas informações, receba um objetivo.</p>
         </section>
         
-        <p className={styles.descricaoSemObjetivo}>Seu objetivo atual é <DestaqueVermelho>{objetivo != "" ? objetivo + " peso!" : "Não Definido!"}</DestaqueVermelho></p>
+        <p className={styles.descricaoSemObjetivo}>Seu objetivo atual é <DestaqueVermelho>{usuario && usuario[0].objetivo ? usuario[0].objetivo + " peso!" : (objetivo != "" ? objetivo + " peso!" : "Não Definido!") }</DestaqueVermelho></p>
 
         <p className={styles.tituloObjetivo}>Informações básicas</p>
         <p className={styles.descricaoObjetivo}>Por favor, informe seu nome e sobrenome para que possamos identificá-lo.</p>

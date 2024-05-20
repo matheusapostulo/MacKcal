@@ -6,7 +6,7 @@ export default function InformacoesConsumo({type, totalAlimento, limiteCaloria, 
             <div>
                 { type == "Inicial" ? (
                         <p> Você está consumindo
-                            <span className={!alertCaloria ? styles.caloriaConsumidaAlert : styles.caloriaConsumida}> {caloriaConsumida}
+                            <span className={alertCaloria ? styles.caloriaConsumidaAlert : styles.caloriaConsumida}> {caloriaConsumida}
                                 <span className={styles.limiteCaloria}>/{limiteCaloria}</span>
                             </span>
                         </p>

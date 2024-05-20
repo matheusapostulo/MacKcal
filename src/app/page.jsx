@@ -5,6 +5,7 @@ import BotaoPrincipal from './components/BotaoPrincipal'
 import CardRefeicao from './components/CardRefeicao'
 import InformacoesConsumo from './components/InformacoesConsumo'
 import { useState, useEffect } from "react"
+import { getUser } from '@/utils/api'
 
 
 const getAlimentos = async function () {
@@ -52,21 +53,15 @@ export default function Home() {
   const [usuario, setUsuario] = useState(null)
   const [caloriaConsumida, setCaloriaConsumida] = useState(null)
 
-  const getUsuario = async function () {
-    try {
-      let data = await fetch("http://localhost:8000/usuarios")
-      let dataJson = await data.json()
-      if(dataJson.length != 0){
-        setUsuario(dataJson)  
-      }
-    } catch (error) {
-      console.log(error)
-    }
+  const checkAndSetUser = async function () {
+    let user = await getUser()
+    console.log(user)
+    setUsuario(user)
   }
 
   // useEffect para buscar usuário
   useEffect(() => {
-    getUsuario()
+    checkAndSetUser()
   }, [])
   
   // useEffect para buscar refeições 
