@@ -52,20 +52,18 @@ export default function Objetivo(){
   }
 
   const editNameLastName = async (typeElement) => {
-    let nomeUser = {
-      nome: nome
-    }
-    let sobrenomeUser = {
-      sobrenome: sobrenome
-    }
-
     try {
       let options = {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
         },
-        body: typeElement === "nome" ? JSON.stringify(nomeUser) : JSON.stringify(sobrenomeUser)
+        body: typeElement === "nome" ? 
+        JSON.stringify({
+          nome: nome
+        }) : JSON.stringify({
+          sobrenome: sobrenome
+        })
       }
       await fetch(`http://localhost:8000/usuarios/${usuario[0].id}`, options)
 
