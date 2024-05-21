@@ -5,7 +5,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import DestaqueVermelho from "../components/DestaqueVermelho";
 import { useEffect, useState } from 'react';
 import { getUser } from '@/utils/api';
-import { RiSipFill } from 'react-icons/ri';
+import { MdEdit } from "react-icons/md";
 
 
 export default function Objetivo(){
@@ -51,6 +51,37 @@ export default function Objetivo(){
     }
   }
 
+  const editNameLastName = async (typeElement) => {
+    let nomeUser = {
+      nome: nome
+    }
+    let sobrenomeUser = {
+      sobrenome: sobrenome
+    }
+
+    try {
+      let options = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: typeElement === "nome" ? JSON.stringify(nomeUser) : JSON.stringify(sobrenomeUser)
+      }
+      await fetch(`http://localhost:8000/usuarios/${usuario[0].id}`, options)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const editName = async (typeElement) => {
+    if(typeElement == "nome" && nome){
+      await editNameLastName(typeElement)
+    } else if(typeElement == "sobrenome" && sobrenome){
+      await editNameLastName(typeElement)
+    }
+  }
+
   // UseEffect que verifica e obtem um usuário
   useEffect(() => {
     checkAndSetUser()
@@ -60,10 +91,10 @@ export default function Objetivo(){
     // Vamos verificar se já existe um usuário e editar suas informações, se não existe, vamos pegar tudo agora criar um usuário  
     const createOrEditUser = async () => {
       /* Caso exista um usuário */
-      if(usuario){
-        /* Aqui tem uma lógica de dar um PATCH nas informações que vai mudar */
-        return
-      }
+      // if(usuario){
+      //   /* Aqui tem uma lógica de dar um PATCH nas informações que vai mudar */
+      //   return
+      // }
       /* Caso não exista um usuário */
       // Criando um objeto com os dados para mandar para o post
       let dados = {
@@ -118,12 +149,29 @@ export default function Objetivo(){
         <p className={styles.descricaoObjetivo}>Por favor, informe seu nome e sobrenome para que possamos identificá-lo.</p>
         <section className={styles.inputContainer}>
             <div className={styles.inputGroup}>
-            <label className={styles.descContainer}>Nome</label>
-                <input onChange={(e) => setNome(e.target.value)} type="text" id="nome" name="nome" placeholder={usuario && usuario[0].nome} />
+                <label className={styles.descContainer}>Nome</label>
+                <div>
+                  <input onChange={(e) => setNome(e.target.value)} type="text" id="nome" name="nome" placeholder={usuario && usuario[0].nome} />
+                  { usuario &&
+                    <button onClick={() => editName("nome")} className={styles.buttonEdit}>
+                      <MdEdit fill="white" />
+                    </button>
+                  }
+                  
+                </div>
             </div>
             <div className={styles.inputGroup}>
                 <label className={styles.descContainer}>Sobrenome</label>
-                <input onChange={(e) => setSobrenome(e.target.value)} type="text" id="sobrenome" name="sobrenome" placeholder={usuario && usuario[0].sobrenome}/>
+                <div>
+                  <input onChange={(e) => setSobrenome(e.target.value)} type="text" id="sobrenome" name="sobrenome" placeholder={usuario && usuario[0].sobrenome}/>
+                  {
+                    usuario &&
+                      <button onClick={() => editName("sobrenome")} className={styles.buttonEdit}>
+                        <MdEdit fill="white" />
+                      </button>
+                  }
+                  
+                </div>
             </div>
         </section>
 
