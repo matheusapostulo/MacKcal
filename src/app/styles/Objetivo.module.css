@@ -8,14 +8,14 @@
 }
 
 .titleSemObjetivo{
-    font-size: 54px;
+    font-size: 36px;
     font-weight: 900;
     text-align: left;
 }
 
 .descricaoSemObjetivo{
     padding: 0px 0px 0px 0px;
-    font-size: 22px;
+    font-size: 16px;
     text-align: left;
     line-height: 1.5;
     margin-top: 24px;
@@ -61,7 +61,7 @@
 }
 
 .mensagemObjetivo {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
     margin-top: 5px;
     margin-left: auto; /* Posiciona o elemento à direita */
@@ -135,14 +135,14 @@
     }
 
     .mensagemObjetivo {
-        font-size: 30px;
+        font-size: 24px;
         text-align: right;
         margin-left: auto; /* Posiciona o elemento à direita */
         word-break: break-all;
     }
 
     .titleSemObjetivo{
-        font-size: 80px;
+        font-size: 60px;
         font-weight: 900;
         text-align: left;
     }
