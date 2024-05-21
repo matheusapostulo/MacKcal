@@ -119,11 +119,11 @@ export default function Objetivo(){
         <section className={styles.inputContainer}>
             <div className={styles.inputGroup}>
             <label className={styles.descContainer}>Nome</label>
-                <input onChange={(e) => setNome(e.target.value)} type="text" id="nome" name="nome" />
+                <input onChange={(e) => setNome(e.target.value)} type="text" id="nome" name="nome" placeholder={usuario && usuario[0].nome} />
             </div>
             <div className={styles.inputGroup}>
                 <label className={styles.descContainer}>Sobrenome</label>
-                <input onChange={(e) => setSobrenome(e.target.value)} type="text" id="sobrenome" name="sobrenome" />
+                <input onChange={(e) => setSobrenome(e.target.value)} type="text" id="sobrenome" name="sobrenome" placeholder={usuario && usuario[0].sobrenome}/>
             </div>
         </section>
 
@@ -132,11 +132,11 @@ export default function Objetivo(){
         <div className={styles.inputContainer}>
             <div className={styles.inputGroup}>
             <label className={styles.descContainer}>{"Peso (em KG)"}</label>
-                <input onChange={(e) => setPeso(Number(e.target.value))} type="number" id="peso" name="peso" />
+                <input onChange={(e) => setPeso(Number(e.target.value))} type="number" id="peso" name="peso" placeholder={usuario && usuario[0].peso}/>
             </div>
             <div className={styles.inputGroup}>
                 <label className={styles.descContainer}>{"Altura (em centímetros)"}</label>
-                <input onChange={(e) => setAltura(Number(e.target.value))} type="number" id="altura" name="altura" />
+                <input onChange={(e) => setAltura(Number(e.target.value))} type="number" id="altura" name="altura" placeholder={usuario && usuario[0].altura}/>
             </div>
         </div>
         <div className={styles.buttonContainer}>
