@@ -10,54 +10,51 @@ import InformacoesConsumo from './InformacoesConsumo';
 import CardAlimentoUsuario from './CardAlimentoUsuario';
 import { useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce'
+import { addToJSON, getAlimentosPorPeriodo } from '@/utils/api';
 
-
-/* Função que adiciona uma refeição ao JSON do json-server. */
-const addToJSON = async function( refeicao ) {
-    try {
-        const options = {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(refeicao)
-        }
-        let resp = await fetch(`http://localhost:8000/alimentos`, options)
-        let data = await resp.json();
-        return data;
-    } catch (e) {
-        console.error("Erro:", e)
-    }
-}
-
-
-export default function ModalRefeicoes({open, handleClose, alimentos, totalAlimento, periodo}){
+export default function ModalRefeicoes({open, handleClose, periodo}){
+    // State que vai armazenar os alimentos
+    const [alimentos, setAlimentos] = useState(null)
     // State relacionado ao input do search
     const [valueInput, setValueInput] = useState("")
     // State da lib use-debounce para colocar um delay no nosso nome de produto do search
     const [valueDebounce] = useDebounce(valueInput, 600)
     // State relacionado aos resultados da pesquisa
     const [alimentosSearch, setAlimentosSearch] = useState(null)
-
     // State relacionado à abertura da caixa de resultados da pesquisa
     const [openSearchResults, setOpenSearchResults] = useState(false)
+
+    // Função que obtem os alimentos da api e seta no state de elementos
+    const fetchAlimentosPeriodo = async () => {
+        let alimentosApi = await getAlimentosPorPeriodo(periodo)
+        setAlimentos(alimentosApi)
+    }
+    
+    // UseEffect que executa quando o componente abre (pelo open no array de dependências) e busca os alimentos do período
+    useEffect(() => {
+        if(open){
+            // Obtendo alimentos da API
+            fetchAlimentosPeriodo()
+        } 
+    },[open])
+
+    // Calculando o total de calorias consumida nessa refeição quando há alimentos
+    const totalCaloriasRefeicao = alimentos
+        ? alimentos.reduce( (acc, cur) => acc + cur.alimentoCaloriaNumber, 0 )
+        : null
 
     // Função para setar o que foi digitado no input no state
     const handleInput = (e) => {
         setValueInput(e.target.value)
     }
 
-    // Função que vai fazer o fetch dos alimentos e colocar no array de alimentos
+    // Função que vai fazer o fetch dos alimentos e colocar no array de alimentos retornados da pesquisa
     const fetchAlimentos = async (valueDebounce) => {
         try {
             // Fetch do alimento com o nome
             const res = await fetch(`/api/alimentos/?query=${valueDebounce}`);
             // Convertendo para json
             const alimentosArrayRes = await res.json()
-
-            //console.log(alimentosArrayRes)
-
             setAlimentosSearch(alimentosArrayRes)
             
         } catch (error) {
@@ -106,23 +103,24 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
         A função abaixo ficará responsável por adicionar o alimento no array de alimentos do usuário no período 
         que está aberto o modal. 
     */
-    const handleAddFood = (alimentoId, alimentoNome, alimentoQuantidade, alimentoCaloria, periodo) => {
-        
+    const handleAddFood = async (alimentoId, alimentoNome, alimentoQuantidade, alimentoCaloria, periodo) => {
         // Vamos pegar a caloria e converter para um number para adicionar no usuário
         const alimentoCaloriaSplit = alimentoCaloria.split(" ")
         const alimentoCaloriaNumber = parseInt(alimentoCaloriaSplit[0])
-        //const periodo = "noite"
-        
-        console.log("PERIODO: ", periodo)
-        addToJSON({
+
+        // Chamando função do utils
+        await addToJSON({
             alimentoId: alimentoId,
             periodo: periodo,
             alimentoNome: alimentoNome,
             alimentoQuantidade: alimentoQuantidade,
             alimentoCaloriaNumber: alimentoCaloriaNumber
         })
-        
-        //console.log(`Vamos adicionar o alimento do id ${alimentoId}, de nome ${alimentoNome}, com quantidade ${alimentoQuantidade} e com ${alimentoCaloriaNumber} calorias`)
+        // Fechando resultados de pesquisa
+        setOpenSearchResults(false)
+        // Buscando os novo alimento adicionado
+        fetchAlimentosPeriodo()
+
     }
 
     return(
@@ -167,7 +165,7 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
                                 alimentosSearch.length > 0 ? (
                                     alimentosSearch.map((alimento) => {
                                         return(
-                                            <div className={styles.containerItemResult}>
+                                            <div key={alimento.descricao + alimento.quantidade} className={styles.containerItemResult}>
                                                 <button className={styles.iconPlus} onClick={() => handleAddFood(alimento.id.timestamp, alimento.descricao, alimento.quantidade, alimento.calorias, periodo)}>
                                                     <FaPlus
                                                         fill="#E4022D"
@@ -186,14 +184,15 @@ export default function ModalRefeicoes({open, handleClose, alimentos, totalAlime
                     </section>
 
                     {/* Informações de consumo do usuário */}
-                    <InformacoesConsumo type={"modalRefeicoes"} totalAlimento={totalAlimento}/>
+                    <InformacoesConsumo type={"modalRefeicoes"} totalAlimento={totalCaloriasRefeicao}/>
+
 
                     {/* Renderizando os alimentos */}
                     <section className={!openSearchResults ? styles.cardsAlimentos : styles.cardsAlimentosHidden}>
-                        { alimentos.map((alimento) => {
+                        { alimentos && alimentos.map((alimento) => {
                             return(
                                 // A key do alimento pode ser um id que o alimento da api pode proporcionar
-                                <CardAlimentoUsuario key={alimento.id} {...alimento}/>
+                                <CardAlimentoUsuario key={alimento.id} {...alimento} atualizarModal={fetchAlimentosPeriodo}/>
                             )
                         })}
                     </section>

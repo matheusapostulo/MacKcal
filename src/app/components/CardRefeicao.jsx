@@ -6,17 +6,18 @@ import { GiChickenLeg } from "react-icons/gi";
 import { useState } from "react";
 import ModalRefeicoes from "./ModalRefeicoes";
 
-export default function CardRefeicao({periodo, alimentos, totalAlimento}){
+export default function CardRefeicao({periodo, alimentos, totalAlimento, atualizarAlimentos}){
 
 // State que controla a abertura do modal
   const [open, setOpen] = useState(false)
 
   const handleOpen = () => {
-      setOpen(true)
+      setOpen(true)  
   }
 
   const handleClose = () => {
-      setOpen(false)
+    atualizarAlimentos()
+    setOpen(false)
   }
     return(
         <>
@@ -54,7 +55,7 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                     <ul>
                         {alimentos.map((alimento) => {
                             return(
-                               <li key={alimento.alimentoId}>
+                               <li key={alimento.id}>
                                     <div>
                                         <p>{alimento.alimentoNome}</p>
                                         <p>{alimento.alimentoCaloriaNumber}</p>
@@ -66,7 +67,7 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento}){
                 </section>
                     
                 <section className={styles.caloriasCard}>
-                    <p>{totalAlimento}</p>
+                    <p>{totalAlimento + " kcal"}</p>
                 </section>
             </section>
         </main>

@@ -7,22 +7,24 @@ import { useEffect, useState } from 'react';
 import { getUser } from '@/utils/api';
 import { MdEdit } from "react-icons/md";
 
-
 export default function Objetivo(){
   // States para verificar se há um usuário ou não
   const [usuario, setUsuario] = useState()
-  
   // States para as informações do usuário
   const [nome, setNome] = useState("")
   const [sobrenome, setSobrenome] = useState("")
-  const [peso, setPeso] = useState()
-  const [altura, setAltura] = useState()
-  const [imc, setImc] = useState()
-  const [objetivo, setObjetivo] = useState()
+  const [peso, setPeso] = useState("")
+  const [altura, setAltura] = useState("")
+  const [imc, setImc] = useState("")
+  const [objetivo, setObjetivo] = useState("")
 
   const checkAndSetUser = async function () {
     let user = await getUser()
-    setUsuario(user)
+    if(user.length !== 0){
+      setUsuario(user)
+    } else {
+      setUsuario(null)
+    }
   }
 
   const calcularObjetivoImc = async () => {
@@ -115,6 +117,13 @@ export default function Objetivo(){
           body: JSON.stringify(dados)
         }
         await fetch("http://localhost:8000/usuarios", options)
+
+        // Fazendo o fetch novamente do user para reenderizar o componente e setando os states para o estado inicial
+        checkAndSetUser()
+        setNome("")
+        setSobrenome("")
+        setPeso("")
+        setAltura("")
   
       } catch (error) {
         console.log(error)
@@ -141,7 +150,7 @@ export default function Objetivo(){
             <p className={styles.mensagemObjetivo}>Insira suas informações, receba um objetivo.</p>
         </section>
         
-        <p className={styles.descricaoSemObjetivo}>Seu objetivo atual é <DestaqueVermelho>{usuario && usuario[0].objetivo ? usuario[0].objetivo + " peso!" : (objetivo != "" ? objetivo + " peso!" : "Não Definido!") }</DestaqueVermelho></p>
+        <p className={styles.descricaoSemObjetivo}>Seu objetivo atual é <DestaqueVermelho>{usuario && usuario[0].objetivo ? usuario[0].objetivo + " peso!" : (objetivo && objetivo != "" ? objetivo + " peso!" : "Não Definido!") }</DestaqueVermelho></p>
 
         <p className={styles.tituloObjetivo}>Informações básicas</p>
         <p className={styles.descricaoObjetivo}>Por favor, informe seu nome e sobrenome para que possamos identificá-lo.</p>
@@ -149,7 +158,7 @@ export default function Objetivo(){
             <div className={styles.inputGroup}>
                 <label className={styles.descContainer}>Nome</label>
                 <div>
-                  <input onChange={(e) => setNome(e.target.value)} type="text" id="nome" name="nome" placeholder={usuario && usuario[0].nome} />
+                  <input onChange={(e) => setNome(e.target.value)} type="text" id="nome" name="nome" placeholder={usuario && usuario[0].nome} value={nome} />
                   { usuario &&
                     <button onClick={() => editName("nome")} className={styles.buttonEdit}>
                       <MdEdit fill="white" />
@@ -161,7 +170,7 @@ export default function Objetivo(){
             <div className={styles.inputGroup}>
                 <label className={styles.descContainer}>Sobrenome</label>
                 <div>
-                  <input onChange={(e) => setSobrenome(e.target.value)} type="text" id="sobrenome" name="sobrenome" placeholder={usuario && usuario[0].sobrenome}/>
+                  <input onChange={(e) => setSobrenome(e.target.value)} type="text" id="sobrenome" name="sobrenome" placeholder={usuario && usuario[0].sobrenome} value={sobrenome} />
                   {
                     usuario &&
                       <button onClick={() => editName("sobrenome")} className={styles.buttonEdit}>
@@ -178,11 +187,11 @@ export default function Objetivo(){
         <div className={styles.inputContainer}>
             <div className={styles.inputGroup}>
             <label className={styles.descContainer}>{"Peso (em KG)"}</label>
-                <input onChange={(e) => setPeso(Number(e.target.value))} type="number" id="peso" name="peso" placeholder={usuario && usuario[0].peso}/>
+                <input onChange={(e) => setPeso(Number(e.target.value))} type="number" id="peso" name="peso" placeholder={usuario && usuario[0].peso} value={peso}/>
             </div>
             <div className={styles.inputGroup}>
                 <label className={styles.descContainer}>{"Altura (em centímetros)"}</label>
-                <input onChange={(e) => setAltura(Number(e.target.value))} type="number" id="altura" name="altura" placeholder={usuario && usuario[0].altura}/>
+                <input onChange={(e) => setAltura(Number(e.target.value))} type="number" id="altura" name="altura" placeholder={usuario && usuario[0].altura} value={altura}/>
             </div>
         </div>
         <div className={styles.buttonContainer}>
