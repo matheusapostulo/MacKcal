@@ -125,7 +125,27 @@
     cursor: pointer;
 }
 
+.containerSemRefeicoes{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 20px;
+    text-align: center;
+}
 
+.containerSemRefeicoes > h1{
+    font-size: 20px;
+}
+
+.containerSemRefeicoes > p{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.iconSemRefeicao{
+    align-self: center;
+    font-size: 50px;
+}
 
 
 /* Desktop */
@@ -184,6 +204,15 @@
         gap: 20px;
         padding: 35px 50px;
         border-bottom: 1px solid #d4d4d4;
+    }
+
+    .containerSemRefeicoes > h1{
+        font-size: 40px;
+    }
+    
+    .containerSemRefeicoes > p{
+        margin-top: 15px;
+        font-size: 16px;
     }
 
 }

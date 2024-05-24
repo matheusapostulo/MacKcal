@@ -1,32 +1,13 @@
 {
-  "usuarios": [
-    {
-      "id": "aeef",
-      "nome": "Matheus",
-      "sobrenome": "Apostulo",
-      "peso": 70,
-      "altura": 175,
-      "imc": "22.86",
-      "objetivo": "manter",
-      "limite_calorias": 2000
-    }
-  ],
+  "usuarios": [],
   "alimentos": [
     {
-      "id": "fa9d",
-      "alimentoId": 1594720691,
-      "periodo": "tarde",
-      "alimentoNome": "Creme de leite fresco",
-      "alimentoQuantidade": "1 colher de sopa (14 g)",
-      "alimentoCaloriaNumber": 55
-    },
-    {
-      "id": "aa2d",
-      "alimentoId": 1594720679,
-      "periodo": "noite",
-      "alimentoNome": "Brotos de feijão",
-      "alimentoQuantidade": "1 xícara (104 g)",
-      "alimentoCaloriaNumber": 31
+      "id": "f616",
+      "alimentoId": 1594720375,
+      "periodo": "manhã",
+      "alimentoNome": "Carne enlatada",
+      "alimentoQuantidade": "1 fatia (21 g)",
+      "alimentoCaloriaNumber": 53
     }
   ]
 }

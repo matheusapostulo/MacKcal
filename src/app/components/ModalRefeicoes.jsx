@@ -6,6 +6,7 @@ import styles from '../styles/ModalRefeicoes.module.css';
 import { AiOutlineSearch } from "react-icons/ai";
 import { IoCloseOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa";
+import { MdNoMeals } from "react-icons/md";
 import InformacoesConsumo from './InformacoesConsumo';
 import CardAlimentoUsuario from './CardAlimentoUsuario';
 import { useEffect, useState } from 'react';
@@ -189,15 +190,30 @@ export default function ModalRefeicoes({open, handleClose, periodo}){
 
                     {/* Renderizando os alimentos */}
                     <section className={!openSearchResults ? styles.cardsAlimentos : styles.cardsAlimentosHidden}>
-                        { alimentos && alimentos.map((alimento) => {
-                            return(
-                                // A key do alimento pode ser um id que o alimento da api pode proporcionar
-                                <CardAlimentoUsuario key={alimento.id} {...alimento} atualizarModal={fetchAlimentosPeriodo}/>
-                            )
-                        })}
+                        { alimentos && alimentos.length != 0 ? (
+                            alimentos.map((alimento) => {
+                                return(
+                                    // A key do alimento pode ser um id que o alimento da api pode proporcionar
+                                    <CardAlimentoUsuario key={alimento.id} {...alimento} atualizarModal={fetchAlimentosPeriodo}/>
+                                )
+                            })
+                        ) : (
+                            <section className={styles.containerSemRefeicoes}> 
+                                <div className={styles.iconSemRefeicao}>
+                                    <MdNoMeals
+                                        fill='#333333'
+                                    />
+                                </div>
+                                <h1>Refeição sem alimentos</h1>
+                                <p>Pesquise e adicione alimentos pela barra de pesquisa</p>
+                            </section>
+                        )}
                     </section>
                 </DialogContent>
             </main>
         </Dialog>
     )
 }
+
+
+

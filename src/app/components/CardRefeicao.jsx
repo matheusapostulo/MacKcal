@@ -52,18 +52,28 @@ export default function CardRefeicao({periodo, alimentos, totalAlimento, atualiz
                 <h1>{periodo}</h1>
 
                 <section className={styles.listaItens}>
-                    <ul>
-                        {alimentos.map((alimento) => {
-                            return(
-                               <li key={alimento.id}>
-                                    <div>
-                                        <p>{alimento.alimentoNome}</p>
-                                        <p>{alimento.alimentoCaloriaNumber}</p>
-                                    </div>
-                                </li> 
-                            )
-                        })}                     
-                    </ul>
+                    { alimentos.length != 0 ? (
+                        <ul>
+                              { alimentos.map((alimento) => {
+                                    return(
+                                       <li key={alimento.id}>
+                                            <div>
+                                                <p>{alimento.alimentoNome}</p>
+                                                <p>{alimento.alimentoCaloriaNumber}</p>
+                                            </div>
+                                        </li> 
+                                    )
+                                })
+                              }                                      
+                        </ul>
+                    ) : (
+                        <section className={styles.containerSemRefeicao}> 
+                            <p>Refeição sem alimentos!</p>
+                            <p>Clique para adicionar</p>
+                        </section>
+
+                    )}
+                    
                 </section>
                     
                 <section className={styles.caloriasCard}>
