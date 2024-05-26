@@ -7,6 +7,7 @@
     padding: 15px 25px;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }
 /* desktop */
 @media screen and (min-width: 768px) {

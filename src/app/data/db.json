@@ -1,91 +1,13 @@
 {
+  "usuarios": [],
   "alimentos": [
     {
-      "id": 1,
-      "alimentoId": 1594720691,
+      "id": "f616",
+      "alimentoId": 1594720375,
       "periodo": "manhã",
-      "alimentoNome": "Creme de leite fresco",
-      "alimentoQuantidade": "1 colher de sopa (14 g)",
-      "alimentoCaloriaNumber": 55
-    },
-    {
-      "id": 2,
-      "alimentoId": 1594720558,
-      "periodo": "manhã",
-      "alimentoNome": "Rapadura de leite",
-      "alimentoQuantidade": "1 rapadura (20 g)",
-      "alimentoCaloriaNumber": 70
-    },
-    {
-      "id": 3,
-      "alimentoId": 1594720894,
-      "periodo": "tarde",
-      "alimentoNome": "Sopa de macarrão",
-      "alimentoQuantidade": "1 xícara (244 g)",
-      "alimentoCaloriaNumber": 83
-    },
-    {
-      "id": 4,
-      "alimentoId": 1594720691,
-      "periodo": "tarde",
-      "alimentoNome": "Creme de leite fresco",
-      "alimentoQuantidade": "1 colher de sopa (14 g)",
-      "alimentoCaloriaNumber": 55
-    },
-    {
-      "id": 5,
-      "alimentoId": 1594720691,
-      "periodo": "noite",
-      "alimentoNome": "Creme de leite fresco",
-      "alimentoQuantidade": "1 colher de sopa (14 g)",
-      "alimentoCaloriaNumber": 55
-    },
-    {
-      "id": 6,
-      "alimentoId": 1594720726,
-      "periodo": "manhã",
-      "alimentoNome": "Molho de creme de leite",
-      "alimentoQuantidade": "1 xícara (244 g)",
-      "alimentoCaloriaNumber": 439
-    },
-    {
-      "id": 7,
-      "alimentoId": 1594720679,
-      "periodo": "tarde",
-      "alimentoNome": "Brotos de feijão",
-      "alimentoQuantidade": "1 xícara (104 g)",
-      "alimentoCaloriaNumber": 31
-    },
-    {
-      "id": 8,
-      "alimentoId": 1594720760,
-      "periodo": "tarde",
-      "alimentoNome": "Pão de queijo",
-      "alimentoQuantidade": "1 pão (70 g)",
-      "alimentoCaloriaNumber": 220
-    },
-    {
-      "id": "b99b",
-      "alimentoId": 1594720976,
-      "periodo": "noite",
-      "alimentoNome": "Ensopado de carne",
-      "alimentoQuantidade": "1 porção (252 g)",
-      "alimentoCaloriaNumber": 481
-    },
-    {
-      "id": "151f",
-      "alimentoId": 1594720760,
-      "periodo": "noite",
-      "alimentoNome": "Biscoito",
-      "alimentoQuantidade": "1 biscoito (58 g)",
-      "alimentoCaloriaNumber": 156
-    },
-    {
-      "id": "4c1a",
-      "alimentoId": 1594720894,
-      "alimentoNome": "Sopa de arroz com frango",
-      "alimentoQuantidade": "1 xícara (243 g)",
-      "alimentoCaloriaNumber": 58
+      "alimentoNome": "Carne enlatada",
+      "alimentoQuantidade": "1 fatia (21 g)",
+      "alimentoCaloriaNumber": 53
     }
   ]
 }

@@ -1,6 +1,6 @@
 # MacKcal - Controle de Calorias em Refeições Diárias
 
-## Descrição do Projeto
+### Descrição do Projeto
 
 Este projeto consiste em um site dedicado ao controle das calorias em refeições diárias, com o objetivo de auxiliar as pessoas a atingirem seu peso ideal de forma saudável. No site, os usuários podem criar, visualizar, editar e excluir suas refeições diárias, permitindo um gerenciamento eficiente da ingestão calórica.
 

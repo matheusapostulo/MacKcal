@@ -8,14 +8,14 @@
 }
 
 .titleSemObjetivo{
-    font-size: 54px;
+    font-size: 36px;
     font-weight: 900;
     text-align: left;
 }
 
 .descricaoSemObjetivo{
     padding: 0px 0px 0px 0px;
-    font-size: 22px;
+    font-size: 16px;
     text-align: left;
     line-height: 1.5;
     margin-top: 24px;
@@ -55,15 +55,20 @@
     margin-bottom: 10px; /* Adicionado espaçamento entre os inputs */
 }
 
+.inputGroup > div {
+    display: flex;
+    gap: 20px;
+}
+
 .mensagemObjetivo {
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
     margin-top: 5px;
     margin-left: auto; /* Posiciona o elemento à direita */
 }
 
 .inputGroup label {
-    display: block;
+    /* display: block; */
     margin-bottom: 5px;
 }
 
@@ -81,6 +86,35 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 20px;
+}
+
+.botaoObjetivo{
+    background-color: #333333;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buttonEdit{
+    display: flex;
+    align-self: center;
+    background-color: #333333;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    height: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.1s;
+}
+
+.buttonEdit:active{
+    background-color: #5a5a5a;
+    transform: translateY(2px); /* Move o botão para baixo */
+    box-shadow: 0 2px #666; /* Sombra reduzida */
 }
 
 /* desktop */
@@ -101,14 +135,14 @@
     }
 
     .mensagemObjetivo {
-        font-size: 30px;
+        font-size: 24px;
         text-align: right;
         margin-left: auto; /* Posiciona o elemento à direita */
         word-break: break-all;
     }
 
     .titleSemObjetivo{
-        font-size: 80px;
+        font-size: 60px;
         font-weight: 900;
         text-align: left;
     }
@@ -161,7 +195,7 @@
     }
     
     .inputGroup input {
-        width: 50%;
+        width: 60%;
         padding: 5px;
         height: 50px;
         border: 1px solid black;
@@ -174,6 +208,10 @@
         flex-direction: row;
         justify-content: space-between;
         padding-top: 20px;
+    }
+
+    .botaoObjetivo{
+        font-size: 18px;
     }
     
 }
