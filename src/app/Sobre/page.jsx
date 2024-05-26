@@ -23,7 +23,7 @@ export default function Objetivo(){
             calórica diária é essencial. Aqui no MacKal, estamos comprometidos em ajudá-lo a atingir seus objetivos de saúde e forma física, 
             fornecendo uma ferramenta intuitiva e eficaz para calcular suas calorias por refeição.</p>
 
-            <img src="../img/1.png"/>
+            <img src="/1.png" className={styles.imageResponsive}/>
 
             <div className={styles.bulletPoints}>
                 <ul>

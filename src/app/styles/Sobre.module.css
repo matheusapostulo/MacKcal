@@ -23,11 +23,11 @@
 
 .descricaoObjetivo {
     padding: 0;
-    font-size: 18px; /* Reduz o tamanho da fonte para dispositivos móveis */
+    font-size: 18px; 
     text-align: justify;
     line-height: 1.5;
-    max-width: 100%; /* Define a largura máxima como 100% para dispositivos móveis */
-    margin: 20px auto; /* Reduz a margem para dispositivos móveis */
+    max-width: 100%; 
+    margin: 20px auto;
 }
 
 .bulletPoints {
@@ -45,8 +45,8 @@
 
 .bulletPoints li {
     margin-top: 20px;
-    width: 100%; /* Define a largura dos itens da lista como 100% */
-    margin: 0 20px; /* Adiciona margem entre os bullet points */
+    width: 100%;
+    margin: 0 20px;
 }
 
 
@@ -76,19 +76,18 @@
 
 .inputContainer {
     display: flex;
-    flex-direction: column; /* Alterado para column */
+    flex-direction: column;
 }
 
 .inputGroup {
-    /* flex: 1; */ /* Removido */
-    margin-bottom: 10px; /* Adicionado espaçamento entre os inputs */
+    margin-bottom: 10px;
 }
 
 .mensagemObjetivo {
     font-size: 20px;
     font-weight: bold;
     margin-top: 5px;
-    margin-left: auto; /* Posiciona o elemento à direita */
+    margin-left: auto;
 }
 
 .inputGroup label {
@@ -97,7 +96,7 @@
 }
 
 .inputGroup input {
-    width: 100%; /* Definido para ocupar toda a largura do container */
+    width: 100%; 
     padding: 5px;
     height: 50px;
     border: 1px solid black;
@@ -157,35 +156,35 @@
     .descricaoObjetivo {
         padding: 0px 0px 0px 0px;
         font-size: 24px;
-        text-align: left; /* Alinha o texto à esquerda */
+        text-align: left;
         line-height: 1.5;
         max-width: 50%;
-        margin: 50 auto; /* Centraliza o texto na página */
-        text-align: justify; /* Justifica o conteúdo */
+        margin: 50 auto; 
+        text-align: justify; 
     }
 
     .bulletPoints {
-        margin-top: 20px; /* Adiciona um espaço entre a imagem e os bullet points */
+        margin-top: 20px;
     }
     
     .bulletPoints ul {
         font-size: 24px;
         text-align: justify;
-        list-style-type: none; /* Remove os bullets padrão da lista */
-        display: flex; /* Permite que os itens da lista fiquem lado a lado */
+        list-style-type: none; 
+        display: flex; 
     }
     
     .bulletPoints li {
         margin-left: 200px; 
-        margin-right: 200px; /* Adiciona espaço entre os bullet points */
-        flex: 1; /* Distribui igualmente o espaço entre os bullet points */
+        margin-right: 200px; 
+        flex: 1;
     }
     
     .miniTitulo {
-        font-weight: bold; /* Adiciona negrito ao mini título */
-        color: #333; /* Define a cor do mini título */
-        margin-bottom: 5px; /* Adiciona espaço entre o mini título e o conteúdo */
-        display: block; /* Define o elemento como um bloco para garantir que ocupe uma linha inteira */
+        font-weight: bold; 
+        color: #333;
+        margin-bottom: 5px; 
+        display: block; 
     }
     
 
@@ -213,7 +212,7 @@
     
     .inputGroup {
         flex: 1;
-        margin-right: 300px; /* Ajuste conforme necessário */
+        margin-right: 300px;
     }
     
     .inputGroup label {
@@ -235,6 +234,13 @@
         flex-direction: row;
         justify-content: space-between;
         padding-top: 20px;
+    }
+
+    .imageResponsive {
+        width: 100%;
+        height: auto;
+        align-self: center;
+        max-width: 1000px;
     }
     
 }
