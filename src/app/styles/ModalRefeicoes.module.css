@@ -1,0 +1,218 @@
+/* Mobile */
+.mainContainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    z-index: 1;
+    overflow-y: hidden;
+}
+
+.areaFechar{
+    flex-grow: 30px; 
+    padding: 8px 8px;
+}
+
+.botaoFecharDrawer{
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.contentContainer{
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 0px 25px;
+    margin-top: 5px;
+}
+
+.searchBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    height: 38px;
+    padding: 0px 12px;
+}
+
+.searchBar > div:first-of-type {
+    width: 100%;
+}
+
+.searchBar > div > input{
+    border: none;
+    height: 27px;
+    width: 90%;
+    padding: 5px 5px 5px 5px;
+    font-size: 14px;
+}
+
+.searchBar > div >input::placeholder{
+    color: #888888;
+}
+
+.iconSearch{
+    display: flex;
+    font-size: 25px;
+}
+
+.iconCloseSearch{
+    display: flex;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.cardsAlimentos{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.cardsAlimentosHidden{
+    display: none;
+}
+
+.hiddenSearchResultsContainer{
+    display: none;
+}
+
+.searchResultsContainer{
+    position: absolute;
+    width:100%;
+    height: 83%;
+    margin-top: 48px;
+    z-index: 2;
+    left:0;
+}
+
+.searchAreaResults{
+    background-color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+
+.noResultSearch{
+    padding: 15px 25px;
+}
+
+.containerItemResult{
+    display: flex;
+    gap:10px;
+    padding: 30px 25px;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+.containerItemResult > p{
+    align-self: center;
+}
+
+.iconPlus{
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.containerSemRefeicoes{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.containerSemRefeicoes > h1{
+    font-size: 20px;
+}
+
+.containerSemRefeicoes > p{
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.iconSemRefeicao{
+    align-self: center;
+    font-size: 50px;
+}
+
+
+/* Desktop */
+@media screen and (min-width: 768px) {
+    .areaFechar{
+        flex-grow: 45px; 
+        padding: 10px 10px;
+    }
+
+    .iconSearch{
+        display: flex;
+        font-size: 30px;
+    }
+
+    .iconCloseSearch{
+        display: flex;
+        font-size: 30px;
+    }
+    
+    .contentContainer{
+        padding: 0px 50px;
+        gap:30px;
+    }
+
+    .botaoFecharDrawer{
+        font-size: 35px;
+    }
+
+    .searchBar{
+        height: 45px;
+    }
+
+    .searchBar > div > input{
+        height: 35px;
+    }
+
+    .searchAreaResults{
+        margin-top:20px;
+        font-size: 16px;
+    }
+
+    .searchResultsContainer{
+        height: 75%;
+    }
+
+    .noResultSearch{
+        padding: 15px 50px;
+    }
+
+    .iconPlus{
+        font-size: 30px;
+    }
+
+    .containerItemResult{
+        display: flex;
+        gap: 20px;
+        padding: 35px 50px;
+        border-bottom: 1px solid #d4d4d4;
+    }
+
+    .containerSemRefeicoes > h1{
+        font-size: 40px;
+    }
+    
+    .containerSemRefeicoes > p{
+        margin-top: 15px;
+        font-size: 16px;
+    }
+
+}

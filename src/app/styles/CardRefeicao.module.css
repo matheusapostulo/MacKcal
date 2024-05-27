@@ -1,8 +1,16 @@
 /* Mobile */
 .mainContainer{
-    border: solid 1px #999999;
+    border: solid 1px #dfdfdf;
     border-radius: 10px;
-    height: 290px;
+    height: 300px;
+    box-shadow: 5px 5px 10px rgba(78, 78, 78, 0.2);
+    transition: transform 0.2s ease-in-out, 0.2s ease-in-out;
+}
+
+.mainContainer:hover{
+    cursor: pointer;
+    box-shadow: 10px 10px 20px rgba(63, 63, 63, 0.2);
+    transform: scale(1.01);
 }
 
 .containerConteudo{
@@ -10,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     margin: 15px 30px;
-    gap: 10px;
+    gap: 15px;
 }
 
 .containerConteudo > section:first-of-type{
@@ -30,21 +38,35 @@
 }
 
 .listaItens > ul{
-    height: 120px;
+    height: 110px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;  
+    flex-direction: column; 
+}
+
+.containerSemRefeicao{
+    height: 110px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 10px;
+    gap: 30px;
+}
+
+.containerSemRefeicao p:nth-child(2){
+    font-size: 19px;
+    color: #999999;
+    font-weight: 800;
 }
 
 .listaItens > ul > li > div{
     display: flex;
     flex-direction: row; 
     gap:10px;
-    
 }
 
 .listaItens > ul > li > div > p{
     color: #999999;
+    font-size: 14px;
     font-weight: 400;
     width: 20%;
     text-align: end;
@@ -64,16 +86,19 @@
 }
 
 /* Desktop */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
     .mainContainer{
-        border: solid 1px #999999;
         border-radius: 10px;
         height: 306px;
-        width: 25%;
+        width: 23%;
     }
 
     .containerConteudo{
-        margin: 15px 40px;
+        margin: 15px 30px;
         gap: 15px;
+    }
+        
+    .listaItens > ul > li > div > p{
+        font-size: 16px;
     }
 }

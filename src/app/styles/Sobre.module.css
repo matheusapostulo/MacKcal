@@ -8,26 +8,55 @@
 }
 
 .titleSemObjetivo{
-    font-size: 36px;
+    font-size: 54px;
     font-weight: 900;
     text-align: left;
 }
 
 .descricaoSemObjetivo{
     padding: 0px 0px 0px 0px;
-    font-size: 16px;
+    font-size: 22px;
     text-align: left;
     line-height: 1.5;
     margin-top: 24px;
 }
 
-.descricaoObjetivo{
-    padding: 0px 0px 0px 0px;
-    font-size: 18px;
-    text-align: left;
+.descricaoObjetivo {
+    padding: 0;
+    font-size: 18px; 
+    text-align: justify;
     line-height: 1.5;
-    margin-top: 10px;
+    max-width: 100%; 
+    margin: 20px auto;
 }
+
+.bulletPoints {
+    margin-top: 20px;
+}
+
+.bulletPoints ul {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: justify;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.bulletPoints li {
+    margin-top: 20px;
+    width: 100%;
+    margin: 0 20px;
+}
+
+
+.miniTitulo {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
 
 .botaoSemObjetivo{
     margin-top: 38px;
@@ -47,33 +76,27 @@
 
 .inputContainer {
     display: flex;
-    flex-direction: column; /* Alterado para column */
+    flex-direction: column;
 }
 
 .inputGroup {
-    /* flex: 1; */ /* Removido */
-    margin-bottom: 10px; /* Adicionado espaçamento entre os inputs */
-}
-
-.inputGroup > div {
-    display: flex;
-    gap: 20px;
+    margin-bottom: 10px;
 }
 
 .mensagemObjetivo {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: bold;
     margin-top: 5px;
-    margin-left: auto; /* Posiciona o elemento à direita */
+    margin-left: auto;
 }
 
 .inputGroup label {
-    /* display: block; */
+    display: block;
     margin-bottom: 5px;
 }
 
 .inputGroup input {
-    width: 100%; /* Definido para ocupar toda a largura do container */
+    width: 100%; 
     padding: 5px;
     height: 50px;
     border: 1px solid black;
@@ -88,34 +111,9 @@
     padding-top: 20px;
 }
 
-.botaoObjetivo{
-    background-color: #333333;
-    color: white;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
 
-.buttonEdit{
-    display: flex;
-    align-self: center;
-    background-color: #333333;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    height: 50%;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s, box-shadow 0.1s;
-}
 
-.buttonEdit:active{
-    background-color: #5a5a5a;
-    transform: translateY(2px); /* Move o botão para baixo */
-    box-shadow: 0 2px #666; /* Sombra reduzida */
-}
+
 
 /* desktop */
 @media screen and (min-width: 768px) {
@@ -135,14 +133,14 @@
     }
 
     .mensagemObjetivo {
-        font-size: 24px;
+        font-size: 30px;
         text-align: right;
-        margin-left: auto; /* Posiciona o elemento à direita */
+        margin-left: auto;
         word-break: break-all;
     }
 
     .titleSemObjetivo{
-        font-size: 60px;
+        font-size: 80px;
         font-weight: 900;
         text-align: left;
     }
@@ -155,13 +153,41 @@
         margin-top: 14px;
     }
 
-    .descricaoObjetivo{
+    .descricaoObjetivo {
         padding: 0px 0px 0px 0px;
         font-size: 24px;
         text-align: left;
         line-height: 1.5;
+        max-width: 50%;
+        margin: 50 auto; 
+        text-align: justify; 
+    }
+
+    .bulletPoints {
+        margin-top: 20px;
     }
     
+    .bulletPoints ul {
+        font-size: 24px;
+        text-align: justify;
+        list-style-type: none; 
+        display: flex; 
+    }
+    
+    .bulletPoints li {
+        margin-left: 200px; 
+        margin-right: 200px; 
+        flex: 1;
+    }
+    
+    .miniTitulo {
+        font-weight: bold; 
+        color: #333;
+        margin-bottom: 5px; 
+        display: block; 
+    }
+    
+
     .botaoSemObjetivo{
         margin-top: 62px;
     }
@@ -186,7 +212,7 @@
     
     .inputGroup {
         flex: 1;
-        margin-right: 300px; /* Ajuste conforme necessário */
+        margin-right: 300px;
     }
     
     .inputGroup label {
@@ -195,7 +221,7 @@
     }
     
     .inputGroup input {
-        width: 60%;
+        width: 50%;
         padding: 5px;
         height: 50px;
         border: 1px solid black;
@@ -210,8 +236,11 @@
         padding-top: 20px;
     }
 
-    .botaoObjetivo{
-        font-size: 18px;
+    .imageResponsive {
+        width: 100%;
+        height: auto;
+        align-self: center;
+        max-width: 1000px;
     }
     
 }
