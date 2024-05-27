@@ -6,11 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "MacKcal",
-<<<<<<< HEAD
   description: "Controle suas refeições para obter uma vida mais saudável!",
-=======
-  description: "Site responsivo para a matéria de Web Mobile",
->>>>>>> release/1.0
 };
 
 export default function RootLayout({ children }) {
